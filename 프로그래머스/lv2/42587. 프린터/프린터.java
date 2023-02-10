@@ -13,6 +13,7 @@ class Solution {
             print.add(item);
         }        
         
+        System.out.println(Collections.max(print));
         int cnt = 0;
         
         while (!print.isEmpty()) {
