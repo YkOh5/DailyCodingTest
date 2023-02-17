@@ -17,7 +17,7 @@ class Solution {
         }
         
         // 1부터 해당 원소의 인덱스까지 연속한 자연수들의 합을 원소로 갖는 배열
-        // 마지막 원소의 인덱스를 n/2 + 1 이므로 배열의 크기는 n/2 + 2
+        // 마지막 원소의 인덱스를 n/2 + 1 설정하려면 배열의 크기는 n/2 + 2
         int[] sums = new int[n/2 + 2];
         for (int i = 1; i < sums.length; i++) {
             sums[i] = sums[i-1] + i;
