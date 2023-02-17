@@ -11,7 +11,7 @@
 
 class Solution {
     public int solution(int n) {
-        //  n이 1이나 2일 때, 반환값 = 1
+        //  n이 1이나 2일 때, 경우의 수 = 1
         if (n < 3) {
             return 1;
         }
@@ -34,7 +34,7 @@ class Solution {
             sum = sums[p2] - sums[p1];
             // n과 같을 때
             if (sum == n) {
-                cnt++;  // 반환값 증가
+                cnt++;  // 경우의 수 + 1
                 p1++;   // p1 이동
             // n보다 작을 때
             } else if (sum < n) {
