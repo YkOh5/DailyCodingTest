@@ -1,24 +1,20 @@
-import java.util.*;
-
+import java.util.Stack;
 class Solution {
     public String solution(String number, int k) {
-        StringBuilder answer = new StringBuilder();
-        int idx = 0;
-        int max = 0;
+        char[] result = new char[number.length() - k];
+        Stack<Character> stack = new Stack<>();
 
-        for (int i = 0; i < number.length() - k; i++) {
-            max = 0;
-            for (int j = idx; j <= k + i; j++) {
-                int num = number.charAt(j) - '0';
-                if (max < num) {
-                    max = num;
-                    idx = j + 1;
-                }
+        for (int i=0; i<number.length(); i++) {
+            char c = number.charAt(i);
+            while (!stack.isEmpty() && stack.peek() < c && k-- > 0) {
+                stack.pop();
             }
-            answer.append(max);
+            stack.push(c);
         }
-
-        return answer.toString();
+        for (int i=0; i<result.length; i++) {
+            result[i] = stack.get(i);
+        }
+        return new String(result);
     }
 }
 
