@@ -12,7 +12,7 @@ class Solution {
         // 오름차순으로 정렬
         Collections.sort(list);
         // 정렬된 ArrayList의 첫 번째 원소(최소값)와 마지막 원소(최대값)을 이용해서 반환
-        return String.valueOf(list.get(0)) + " " + String.valueOf(list.get(list.size()-1));
+        return String.valueOf(list.get(0) + " " + list.get(list.size()-1));
         
         
         // 기초적인 방법으로 최소/최대값을 구하고, StringBuilder를 이용해서 이어붙이는 방식이 가장 빠르다
