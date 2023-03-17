@@ -14,5 +14,17 @@ class Solution {
         }
         // 문자열로 변환해서 반환
         return sb.toString();
+        
+        
+        // 문자 배열을 이용하는 방식이 처리속도가 조금 더 빠르다
+        // char[] charArr = phone_number.toCharArray();
+        // for(int i = 0; i < charArr.length - 4; i ++) {
+        //     charArr[i] = '*';
+        // }
+        // return String.valueOf(charArr);
+        
+        
+        // 정규식을 잘 활용하면 단 한 줄로도 해결 가능
+        // return phone_number.replaceAll(".(?=.{4})", "*");
     }
 }
