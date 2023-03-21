@@ -4,6 +4,7 @@
 class Solution {
     public long solution(int price, int money, int count) {
         // 놀이기구 이용 횟수의 총합
+        // 등차수열의 합 = n * (first + last) / 2
         long cntSum = count * (1 + count) / 2;
         
         // 금액이 부족하지 않으면 0을 반환, 그렇지 않으면 차액의 절대값을 반환
