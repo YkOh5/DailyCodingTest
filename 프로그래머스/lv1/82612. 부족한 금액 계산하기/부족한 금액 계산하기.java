@@ -8,5 +8,9 @@ class Solution {
         
         // 금액이 부족하지 않으면 0을 반환, 그렇지 않으면 차액의 절대값을 반환
         return money - price * cntSum >= 0 ? 0 : Math.abs(money - price * cntSum);
+        
+        
+        // Math.max를 이용하면 더 간결한 코드로 해결 가능
+        // return Math.max(0, (long)price * (count * (1 + count) / 2) - money);
     }
 }
