@@ -1,4 +1,5 @@
 import java.util.Scanner;
+// import java.util.stream.IntStream;
 
 class Solution {
     public static void main(String[] args) {
@@ -14,5 +15,11 @@ class Solution {
             }
             System.out.println();
         }
+        
+        
+        // Stream을 활용한 풀이
+        // StringBuilder sb = new StringBuilder();
+        // IntStream.range(0, a).forEach(s -> sb.append("*"));   // 가로
+        // IntStream.range(0, b).forEach(s -> System.out.println(sb.toString()));   //세로
     }
 }
