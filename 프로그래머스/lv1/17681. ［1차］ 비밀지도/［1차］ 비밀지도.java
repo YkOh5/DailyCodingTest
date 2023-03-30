@@ -10,7 +10,7 @@ class Solution {
             // 행을 나타내는 2진수 문자열을 지도의 길이에 맞게 배치하고 2진수 중 1은 벽(#)으로, 0은 공백( )으로 복구
             answer[i] = String.format("%" + n + "s", row).replace("1", "#").replace("0", " ");
             
-            // 지도 최대 길이와 실제 길이를 고려해서 substring()을 사용하면 처리속도를 개선할 수 있다
+            // 지도의 최대 길이와 실제 길이를 고려해서 substring()을 사용하면 처리속도를 개선할 수 있다
             // answer[i] = String.format("%16s", row).substring(16-n).replace("1", "#").replace("0", " ");
         }
         
