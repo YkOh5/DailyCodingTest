@@ -10,5 +10,9 @@ class Solution {
         int dayOfWeekNumber = dayOfWeek.getValue();
         
         return day[dayOfWeekNumber - 1];
+        
+        
+        // 단 한 줄의 코드로 해결 가능
+        // return LocalDate.of(2016, a, b).getDayOfWeek().toString().substring(0,3);
     }
 }
