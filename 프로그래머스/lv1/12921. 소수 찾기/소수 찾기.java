@@ -33,11 +33,11 @@ class Solution {
         return cnt;
         
         
-        // 아래와 같이 이중반복문으로 범위 내 모든 수를 일일이 확인하는 방식은 비효율적이다
+        // '에라토스테네스의 체'보다는 비효율적이지만, j의 범위를 i의 제곱근까지로 한정하면 간단한 방식으로도 해결 가능
         // int answer = 0;
         // for (int i = 2; i <= n; i++) {
         //     boolean primeNum = true;
-        //     for (int j = 2; j <= i / 2; j++) {
+        //     for (int j = 2; j <= Math.sqrt(i); j++) {
         //         if (i % j == 0) {
         //             primeNum = false;
         //             break;
