@@ -34,5 +34,15 @@ class Solution {
         
         // 아라비아 숫자의 문자열을 정수형으로 변환해서 반환
         return Integer.parseInt(arabicNum.toString());
+        
+        
+        // String.replace로 간단히 해결할 수 있는 문제였다
+        // String 클래스에 대한 이해가 부족하다
+        // 키보드에 손을 올리기 이전에 펜을 잡고 충분히 생각하는 것이 오히려 더 빠른 길이다
+        // String[] nums = {"zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"};
+        // for (int i = 0; i < nums.length; i++) {
+        //    s = s.replace(nums[i], String.valueOf(i));
+        // }        
+        // return Integer.parseInt(s);
     }
 }
