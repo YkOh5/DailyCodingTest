@@ -21,6 +21,12 @@ class Solution {
             }
         }
         
+        // 위의 for문을 아래와 같이 교체하면 처리속도도 향상되고 코드도 간결해진다
+        // for (int i = numsX.length - 1; i >= 0; i--) {
+        //     if (numsX[i] > 0 && numsY[i] > 0)
+        //         answer.append(String.valueOf(i).repeat(Math.min(numsX[i], numsY[i])));
+        // }        
+        
         // 공통적으로 나타나는 숫자가 없는 경우
         if (answer.length() == 0) return "-1";
         // 공통적으로 나타나는 숫자가 0뿐인 경우
