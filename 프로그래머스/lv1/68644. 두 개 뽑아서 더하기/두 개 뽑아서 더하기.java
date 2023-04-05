@@ -25,6 +25,6 @@ class Solution {
         
         
         // HashSet에 값을 추가한 이후의 코드들은 아래와 같이 단 한 줄로 줄일 수 있으나, 처리속도가 느려진다
-        // return set.stream().sorted((a, b) -> a - b).mapToInt(Integer::intValue).toArray();
+        // return set.stream().sorted().mapToInt(Integer::intValue).toArray();
     }
 }
