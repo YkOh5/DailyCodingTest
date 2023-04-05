@@ -39,6 +39,7 @@ class Solution {
     }
 }
 
+// 별도의 클래스를 만들어서 다루는 방식이 좀 더 객체지향적인 것 같긴 하지만, 이렇게 하는게 맞나??
 // class StageFailureRate {
 //     int stage;
 //     double failureRate;
