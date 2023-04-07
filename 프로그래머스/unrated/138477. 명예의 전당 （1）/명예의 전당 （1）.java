@@ -36,7 +36,30 @@ class Solution {
 }
 
 
-// Stack을 이용한 풀이
+// PriorityQueue를 이용하면 처리속도는 다소 떨어지지만, 훨씬 더 간단하게 해결 가능
+// import java.util.PriorityQueue;
+
+// class Solution {
+//     public int[] solution(int k, int[] score) {
+//         PriorityQueue<Integer> hallOfFame = new PriorityQueue<>();
+//         int[] answer = new int[score.length];
+        
+//         for(int i = 0; i < score.length; i++) {
+
+//             hallOfFame.add(score[i]);
+//             if (hallOfFame.size() > k) {
+//                 hallOfFame.poll();
+//             }
+
+//             answer[i] = hallOfFame.peek();
+//         }
+
+//         return answer;
+//     }
+// }
+
+
+// Stack을 이용한 풀이 -> 비효율적
 // import java.util.Stack;
 
 // class Solution {
@@ -61,29 +84,6 @@ class Solution {
 //             answer[i] = HallOfFame.peek();
 //         }
         
-//         return answer;
-//     }
-// }
-
-
-// PriorityQueue를 이용하면 처리속도는 다소 떨어지지만, 훨씬 더 간단하게 해결 가능
-// import java.util.PriorityQueue;
-
-// class Solution {
-//     public int[] solution(int k, int[] score) {
-//         PriorityQueue<Integer> hallOfFame = new PriorityQueue<>();
-//         int[] answer = new int[score.length];
-        
-//         for(int i = 0; i < score.length; i++) {
-
-//             hallOfFame.add(score[i]);
-//             if (hallOfFame.size() > k) {
-//                 hallOfFame.poll();
-//             }
-
-//             answer[i] = hallOfFame.peek();
-//         }
-
 //         return answer;
 //     }
 // }
