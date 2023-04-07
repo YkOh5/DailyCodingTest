@@ -18,7 +18,7 @@ class Solution {
     boolean isPrimeNumber(int sum) {
         // 합의 제곱근까지만 검사함으로써 불필요한 반복 제거
         for (int i = 2; i <= Math.sqrt(sum); i++) {
-            if ((sum) % i == 0) return false;
+            if (sum % i == 0) return false;
         }
         return true;
     }
