@@ -33,3 +33,34 @@ class Solution {
         return answer;
     }
 }
+
+
+
+// Stack을 이용한 풀이
+// import java.util.Stack;
+
+// class Solution {
+//     public int[] solution(int k, int[] score) {
+//         Stack<Integer> HallOfFame = new Stack<>();
+//         Stack<Integer> tmp = new Stack<>();
+//         int[] answer = new int[score.length];
+        
+//         for (int i = 0; i < score.length; i++) {
+//             while (!HallOfFame.isEmpty() && HallOfFame.peek() < score[i]) {
+//                 tmp.push(HallOfFame.pop());
+//             }
+            
+//             if (HallOfFame.size() < k) HallOfFame.push(score[i]);
+            
+//             while (HallOfFame.size() < k && !tmp.isEmpty()) {
+//                 HallOfFame.push(tmp.pop());
+//             }
+            
+//             tmp.clear();
+            
+//             answer[i] = HallOfFame.peek();
+//         }
+        
+//         return answer;
+//     }
+// }
