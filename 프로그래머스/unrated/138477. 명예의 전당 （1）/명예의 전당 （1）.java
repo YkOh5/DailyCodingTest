@@ -16,12 +16,13 @@ class Solution {
                 targetIdx = hallOfFame.size();
                 // 새로운 점수가 특정 인덱스에 위치한 기존의 점수보다 작으면
                 if (score[i] < hallOfFame.get(j)) {
-                    targetIdx = j;   // 해당 인덱스에 새로운 점수를 추가
+                    targetIdx = j;
                     break;
                 }
             }
-            
+            // 해당 인덱스에 새로운 점수를 추가
             hallOfFame.add(targetIdx, score[i]);
+            
             // 명예의 전당에 올려진 점수의 개수가 k개를 초과하면
             if (hallOfFame.size() > k) {
                 hallOfFame.remove(0);   // 최하위 점수 탈락
@@ -33,7 +34,6 @@ class Solution {
         return answer;
     }
 }
-
 
 
 // Stack을 이용한 풀이
@@ -61,6 +61,29 @@ class Solution {
 //             answer[i] = HallOfFame.peek();
 //         }
         
+//         return answer;
+//     }
+// }
+
+
+// PriorityQueue를 이용하면 처리속도는 다소 떨어지지만, 훨씬 더 간단하게 해결 가능
+// import java.util.PriorityQueue;
+
+// class Solution {
+//     public int[] solution(int k, int[] score) {
+//         PriorityQueue<Integer> hallOfFame = new PriorityQueue<>();
+//         int[] answer = new int[score.length];
+        
+//         for(int i = 0; i < score.length; i++) {
+
+//             hallOfFame.add(score[i]);
+//             if (hallOfFame.size() > k) {
+//                 hallOfFame.poll();
+//             }
+
+//             answer[i] = hallOfFame.peek();
+//         }
+
 //         return answer;
 //     }
 // }
