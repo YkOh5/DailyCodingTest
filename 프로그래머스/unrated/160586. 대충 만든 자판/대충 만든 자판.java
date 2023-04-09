@@ -33,3 +33,33 @@ class Solution {
         return answer;
     }
 }
+
+
+// HashMap을 이용하면 조금 더 쉽게 코드를 짤 수 있지만, 처리속도가 떨어진다
+// import java.util.HashMap;
+// class Solution {
+//     public int[] solution(String[] keymap, String[] targets) {
+//         HashMap<Character, Integer> map = new HashMap<>();
+//         for (int i = 0; i < keymap.length; i++) {
+//             for (int j = 0; j < keymap[i].length(); j++) {
+//                 char alphabet = keymap[i].charAt(j);
+//                 if (map.getOrDefault(alphabet, Integer.MAX_VALUE) > j + 1) 
+//                     map.put(alphabet, j + 1);
+//             }
+//         }        
+//         int[] answer = new int[targets.length];
+//         for (int i = 0; i < targets.length; i++) {
+//             int sum = 0;
+//             for (int j = 0; j < targets[i].length(); j++) {
+//                 char alphabet = targets[i].charAt(j);
+//                 if (map.get(alphabet) == null) {
+//                     sum = -1;
+//                     break;
+//                 }
+//                 sum += map.get(alphabet);
+//             }
+//             answer[i] = sum;
+//         }                
+//         return answer;
+//     }
+// }
