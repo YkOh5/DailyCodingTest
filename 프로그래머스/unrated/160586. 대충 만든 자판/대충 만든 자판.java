@@ -1,8 +1,7 @@
 class Solution {
     public int[] solution(String[] keymap, String[] targets) {
         // 각 알파벳에 대한 최소한의 필요 키-입력 횟수를 원소로 갖는 배열 (A : Index 0 ~ Z : Index 25)
-        int[] keyStrokes = new int[26];
-        
+        int[] keyStrokes = new int[26];        
         for (int i = 0; i < keymap.length; i++) {            
             for (int j = 0; j < keymap[i].length(); j ++) {
                 // 특정 키를 눌러서 입력할 수 있는 각 알파벳에 대한 최소한의 필요 입력 횟수가
