@@ -23,3 +23,20 @@ class Solution {
         return players;
     }
 }
+
+
+// 아래와 같이 이중반복문으로 배열의 원소끼리 낱낱이 비교하는 단순한 방식은 비효율적이다
+// class Solution {
+//     public String[] solution(String[] players, String[] callings) {
+//         for (int i = 0; i < callings.length; i++) {
+//             for (int j = 0 ; j < players.length; j++) {
+//                 if (callings[i].equals(players[j])) {
+//                     String tmp = players[j - 1];
+//                     players[j - 1] = players[j];
+//                     players[j] = tmp;
+//                 }
+//             }
+//         }                
+//         return players;
+//     }
+// }
