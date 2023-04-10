@@ -35,3 +35,17 @@ class Solution {
 //         return answer;
 //     }
 // }
+
+
+// 일반식을 잘 사용하면 코드를 좀 더 효율적으로 바꿀 수 있긴 하지만, 이런 방식도 역시 유지·보수가 어렵다
+// class Solution {
+//     public int solution(String[] babbling) {
+//         int answer = 0;        
+//         for (int i = 0; i < babbling.length; i++) {
+//             if (babbling[i].contains("ayaaya") || babbling[i].contains("yeye") || babbling[i].contains("woowoo") || babbling[i].contains("mama")) continue;
+//             babbling[i] = babbling[i].replaceAll("aya|ye|woo|ma", "");            
+//             if (babbling[i].length() == 0) answer++;
+//         }        
+//         return answer;
+//     }
+// }
