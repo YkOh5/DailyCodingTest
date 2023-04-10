@@ -37,7 +37,7 @@ class Solution {
 // }
 
 
-// 일반식을 잘 사용하면 코드를 좀 더 효율적으로 바꿀 수 있긴 하지만, 이런 방식도 역시 유지·보수가 어렵다
+// 일반식을 잘 사용하면 좀 더 효율적으로 코드를 바꿀 수 있긴 하지만, 이런 방식도 역시 유지·보수가 어렵다
 // class Solution {
 //     public int solution(String[] babbling) {
 //         int answer = 0;        
