@@ -18,3 +18,20 @@ class Solution {
         return cnt;
     }
 }
+
+
+// 아래와 같이 단순무식한 방식은 유지·보수가 어렵다
+// class Solution {
+//     public int solution(String[] babbling) {
+//         int answer = 0;        
+//         for (int i = 0; i < babbling.length; i++) {
+//             if (!babbling[i].contains("ayaaya")) babbling[i] = babbling[i].replace("aya", " ");
+//             if (!babbling[i].contains("yeye")) babbling[i] = babbling[i].replace("ye", " ");
+//             if (!babbling[i].contains("woowoo")) babbling[i] = babbling[i].replace("woo", " ");
+//             if (!babbling[i].contains("mama")) babbling[i] = babbling[i].replace("ma", " ");
+//             babbling[i] = babbling[i].replace(" ", "");            
+//             if (babbling[i].length() == 0) answer++;
+//         }        
+//         return answer;
+//     }
+// }
