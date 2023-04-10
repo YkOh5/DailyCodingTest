@@ -16,17 +16,15 @@ class Solution {
         
         int[] answer = new int[targets.length];
         for (int i = 0; i < targets.length; i++) {
-            int sum = 0;
             for (int j = 0; j < targets[i].length(); j++) {
                 // 작성하려는 문자열의 특정 문자를 주어진 키들로 입력할 수 없는 경우
                 if (keyStrokes[targets[i].charAt(j) - 'A'] == 0) {
-                    sum = -1;   // 최소 필요 키-입력 횟수의 합을 -1로 갱신
+                    answer[i] = -1;   // 최소 필요 키-입력 횟수의 합을 -1로 갱신
                     break;   // 해당 문자열에 대한 작업 중단
                 }
                 // 입력할 수 있는 경우 최소 필요 키-입력 횟수를 합산
-                sum += keyStrokes[targets[i].charAt(j) - 'A'];
-            }
-            answer[i] = sum;
+                answer[i] += keyStrokes[targets[i].charAt(j) - 'A'];
+            }            
         }
                 
         return answer;
@@ -48,16 +46,14 @@ class Solution {
 //         }        
 //         int[] answer = new int[targets.length];
 //         for (int i = 0; i < targets.length; i++) {
-//             int sum = 0;
 //             for (int j = 0; j < targets[i].length(); j++) {
 //                 char alphabet = targets[i].charAt(j);
 //                 if (map.get(alphabet) == null) {
-//                     sum = -1;
+//                     answer[i] = -1;
 //                     break;
 //                 }
-//                 sum += map.get(alphabet);
+//                 answer[i] += map.get(alphabet);
 //             }
-//             answer[i] = sum;
 //         }                
 //         return answer;
 //     }
