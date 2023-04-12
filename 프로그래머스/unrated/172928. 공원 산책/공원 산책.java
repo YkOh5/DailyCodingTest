@@ -1,3 +1,7 @@
+// 1. 공원(park)에서 출발점 탐색
+// 2. 경로(routes)들 각각에 대해 공원을 벗어나거나 장애물에 가로막히는 경우가 있는지 확인
+// 3. 해당 경로가 유효하다면 현재 위치를 갱신
+
 class Solution {
     private int[] curPos = new int[2];   // 현재 위치
     
@@ -28,8 +32,8 @@ class Solution {
         for (int i = 0; i < park.length; i++) {
             for (int j = 0; j < park[i].length(); j++) {
                 if (park[i].charAt(j) == 'S') {
-                    curPos[0] = i;   // x좌표
-                    curPos[1] = j;   // y좌표
+                    curPos[0] = i;   // 세로 좌표
+                    curPos[1] = j;   // 가로 좌표
                     return;
                 }
             }
@@ -42,7 +46,7 @@ class Solution {
         for (int j = 1; j <= n; j++) {
             if (park[curPos[0]].charAt(curPos[1] + j) == 'X') return;   // 장애물에 가로막힌 경우
         }                
-        curPos[1] = curPos[1] + n;
+        curPos[1] = curPos[1] + n;   // 현재 위치 갱신
     }
     
     // 서쪽으로 이동
