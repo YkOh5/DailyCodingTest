@@ -7,15 +7,14 @@ class Solution {
         
         int cntRandom = 0;   // 동생의 낙서로 알아볼 수 없게 된 번호의 개수
         int cntWin = 0;   // 민호가 맞힌 당첨 번호의 개수
-        for (int i = 0; i < lottos.length; i++) {
-            if (lottos[i] == 0) cntRandom++;
-            if (winNums[lottos[i]]) cntWin++;
+        for (int num : lottos) {
+            if (num == 0) cntRandom++;
+            if (winNums[num]) cntWin++;
         }
-        
-        int[] answer = new int[2];
-        answer[0] = (cntRandom + cntWin >= 2)? 7 - (cntRandom + cntWin) : 6;  // 최고 순위
-        answer[1] = (cntWin >= 2)? 7 - cntWin : 6;   // 최저 순위
-        
-        return answer;
+                        
+        int maxRank = Math.min(7 - (cntRandom + cntWin), 6);   // 당첨 가능한 최고 순위
+        int minRank = Math.min(7 - cntWin, 6);   // 당첨 가능한 최저 순위
+                
+        return new int[]{maxRank, minRank};
     }
 }
