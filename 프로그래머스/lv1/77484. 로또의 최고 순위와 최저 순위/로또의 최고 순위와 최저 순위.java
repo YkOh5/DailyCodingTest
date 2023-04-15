@@ -5,7 +5,7 @@ class Solution {
             winNums[num] = true;
         }
         
-        int cntRandom = 0;   // 동생의 낙서로 알아볼 수 없게 된 번호의 개수
+        int cntRandom = 0;   // 동생의 낙서로 알아볼 수 없게 된 번호의 개    수
         int cntWin = 0;   // 민호가 맞힌 당첨 번호의 개수
         for (int num : lottos) {
             if (num == 0) cntRandom++;
