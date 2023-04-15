@@ -22,6 +22,7 @@ class Solution {
                 }
                 // 2, 5, 8, 0
                 default -> {
+                    // 왼쪽 엄지가 숫자에 더 가깝거나 양손 엄지와의 거리가 동일하지만 왼손잡이인 경우
                     if (distanceL < distanceR || (distanceL == distanceR && hand.equals("left"))) {
                         tappedWithTheLeftThumb(numPos[num]);
                     }
@@ -35,15 +36,18 @@ class Solution {
         return answer.toString();
     }
     
+    // 맨하탄 거리 도출
     private int getManhattanDistance(int[] thumbPos, int[] numPos) {
                 return Math.abs(thumbPos[0] - numPos[0]) + Math.abs(thumbPos[1] - numPos[1]);
     }
     
+    // 왼쪽 엄지로 탭
     private void tappedWithTheLeftThumb(int[] numPos) {        
         answer.append('L');
-        leftPos = numPos;                
+        leftPos = numPos;   // 엄지 위치 갱신
     }
     
+    // 오른쪽 엄지로 탭
     private void tappedWithTheRightThumb(int[] numPos) {
         answer.append('R');
         rightPos = numPos;        
