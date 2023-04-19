@@ -4,9 +4,9 @@ import java.util.Set;
 
 class Solution {
     public int[] solution(String[] id_list, String[] report, int k) {
-        HashMap<String, HashSet<String>> reportMap = getReportMap(id_list, report);
-        HashMap<String, Integer> reportedCountMap = getReportedCountMap(reportMap);
-        int[] bannedIdCountByReporter = new int[id_list.length];
+        HashMap<String, HashSet<String>> reportMap = getReportMap(id_list, report);   // 신고자 & 피신고자
+        HashMap<String, Integer> reportedCountMap = getReportedCountMap(reportMap);   // 피신고자 & 피신고 횟수
+        int[] bannedIdCountByReporter = new int[id_list.length];   // 신고자가 처리 결과를 메일로 받은 횟수
         
         // 모든 사용자 아이디에 대해서
         for (int i = 0; i < id_list.length; i++) {
