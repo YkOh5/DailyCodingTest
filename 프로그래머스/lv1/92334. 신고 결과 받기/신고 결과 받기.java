@@ -15,7 +15,7 @@ class Solution {
             for (String reportedId : reportedIdSet) {
                 // 피신고 횟수가 정지 기준을 넘은 경우
                 if (reportedCountMap.getOrDefault(reportedId, 0) >= k)
-                    bannedIdCountByReporter[i]++;   // 해당 사용자가 처리 결과 메일을 받은 횟수 증가
+                    bannedIdCountByReporter[i]++;   // 사용자가 처리 결과 메일을 받은 횟수 증가
             }
         }            
                 
