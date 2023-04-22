@@ -10,7 +10,7 @@
 // 5. 대기 중인 트럭이 없고(idx == truck_weights.length), 모든 트럭이 다리를 지났(Queue.isEmpty())을 때,
 //    현재 시간을 반환
 
-// 실제 코드에서는 4~6 과정을 역순으로 구현해야 아귀가 맞다.
+// -> 실제 코드에서는 4~6 과정을 역순으로 구현해야 아귀가 맞다.
 
 import java.util.*;
 
@@ -51,7 +51,7 @@ class Solution {
                 && totalWeight + truck_weights[idx] <= weight) {
                 // 트럭이 다리에 오르고
                 bridge.add(new Truck(truck_weights[idx], time));
-                // 다리를 건너는 트럭의 총중량을 갱신
+                // 다리를 건너는 트럭의 총 중량을 갱신
                 totalWeight += truck_weights[idx];                
                 idx++;
             }
