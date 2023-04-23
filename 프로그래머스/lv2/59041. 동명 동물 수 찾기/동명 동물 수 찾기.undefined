@@ -5,3 +5,15 @@ WHERE IFNULL(NAME, "") <> ""
 GROUP BY NAME
 HAVING COUNT >= 2
 ORDER BY NAME ASC;
+
+
+# HAVING 절을 사용하지 않으면 서브쿼리(sub query)를 이용해야 해서 코드가 복잡해진다
+# SELECT A.NAME, A.COUNT 
+# FROM (
+#     SELECT NAME, COUNT(*) AS COUNT 
+#     FROM ANIMAL_INS 
+#     WHERE NAME IS NOT NULL 
+#     GROUP BY NAME
+# ) A 
+# WHERE A.COUNT >= 2
+# ORDER BY NAME;
