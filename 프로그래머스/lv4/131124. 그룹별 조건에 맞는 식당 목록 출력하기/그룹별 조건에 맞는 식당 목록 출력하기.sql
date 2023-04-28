@@ -1,6 +1,38 @@
+# 아이디별 작성한 리뷰의 최대 개수를 선택 -> 해당 개수만큼 리뷰를 작성한 아이디들을 선택 -> 해당 아이디들의 리뷰 정보를 선택
+# 언뜻보면 난해하지만, 순서대로 한 단계씩 해결하면 그리 어렵지 않다!
+SELECT MEMBER_NAME, REVIEW_TEXT, DATE_FORMAT(REVIEW_DATE, '%Y-%m-%d') AS REVIEW_DATE
+FROM MEMBER_PROFILE AS T1
+    JOIN REST_REVIEW AS T2
+        ON T1.MEMBER_ID = T2.MEMBER_ID
+WHERE T1.MEMBER_ID IN (
+    SELECT MEMBER_ID
+    FROM REST_REVIEW
+    GROUP BY MEMBER_ID
+    HAVING COUNT(REVIEW_ID) = (
+        SELECT MAX(CNT) 
+        FROM (SELECT COUNT(*) AS CNT
+              FROM REST_REVIEW 
+              GROUP BY MEMBER_ID) AS CNTS
+        )
+    )
+ORDER BY REVIEW_DATE ASC, REVIEW_TEXT ASC;
 
-SELECT m.member_name, r.REVIEW_TEXT , date_format(r.REVIEW_DATE, '%Y-%m-%d') REVIEW_DATE
-from member_profile m inner join rest_review r on m.member_id = r.member_id
-where m.member_id = 
-(select member_id from rest_review group by member_id order by count(review_id) desc limit 1)
-order by REVIEW_DATE, REVIEW_TEXT
+
+# 작성한 리뷰 개수의 최대값을 구하는 서브쿼리를 달리 할 수 있다
+# SELECT T1.MEMBER_NAME, T2.REVIEW_TEXT, DATE_FORMAT(T2.REVIEW_DATE, '%Y-%m-%d') AS REVIEW_DATE
+# FROM MEMBER_PROFILE AS T1
+#     JOIN REST_REVIEW AS T2
+#         ON T1.MEMBER_ID = T2.MEMBER_ID
+# WHERE T1.MEMBER_ID IN (
+#     SELECT MEMBER_ID
+#     FROM REST_REVIEW
+#     GROUP BY MEMBER_ID
+#     HAVING COUNT(*) = (
+#         SELECT COUNT(*)
+#         FROM REST_REVIEW
+#         GROUP BY MEMBER_ID
+#         ORDER BY COUNT(*) DESC
+#         LIMIT 1
+#         )
+#     )
+# ORDER BY T2.REVIEW_DATE ASC, T2.REVIEW_TEXT ASC;
