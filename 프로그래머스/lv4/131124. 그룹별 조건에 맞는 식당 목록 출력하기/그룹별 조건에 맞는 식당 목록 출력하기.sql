@@ -1,4 +1,4 @@
-# 아이디별 작성한 리뷰의 최대 개수를 선택 -> 해당 개수만큼 리뷰를 작성한 아이디들을 선택 -> 해당 아이디들의 리뷰 정보를 선택
+# ID별 작성한 Review의 최대 개수를 선택 -> 해당 개수만큼 Review를 작성한 ID들을 선택 -> 해당 ID들의 Review 정보를 선택
 # 언뜻보면 난해하지만, 순서대로 한 단계씩 해결하면 그리 어렵지 않다!
 SELECT MEMBER_NAME, REVIEW_TEXT, DATE_FORMAT(REVIEW_DATE, '%Y-%m-%d') AS REVIEW_DATE
 FROM MEMBER_PROFILE AS T1
@@ -18,7 +18,7 @@ WHERE T1.MEMBER_ID IN (
 ORDER BY REVIEW_DATE ASC, REVIEW_TEXT ASC;
 
 
-# 작성한 리뷰 개수의 최대값을 구하는 서브쿼리를 달리 할 수 있다
+# 작성한 Review 개수의 최대값을 구하는 서브쿼리(Sub-Query)를 달리 할 수 있다
 # SELECT T1.MEMBER_NAME, T2.REVIEW_TEXT, DATE_FORMAT(T2.REVIEW_DATE, '%Y-%m-%d') AS REVIEW_DATE
 # FROM MEMBER_PROFILE AS T1
 #     JOIN REST_REVIEW AS T2
@@ -38,9 +38,16 @@ ORDER BY REVIEW_DATE ASC, REVIEW_TEXT ASC;
 # ORDER BY T2.REVIEW_DATE ASC, T2.REVIEW_TEXT ASC;
 
 
-SELECT MEMBER_NAME, REVIEW_TEXT, DATE_FORMAT(REVIEW_DATE, '%Y-%m-%d') AS REVIEW_DATE
-FROM MEMBER_PROFILE AS T1
-    JOIN REST_REVIEW AS T2
-        ON T1.MEMBER_ID = T2.MEMBER_ID
-WHERE T1.MEMBER_ID = (select member_id from rest_review group by member_id order by count(review_id) desc limit 1)
-ORDER BY REVIEW_DATE ASC, REVIEW_TEXT ASC;
+# 이런 식의 서브쿼리(Sub-Query)는 ID별 Review의 최대 개수만큼 작성한 ID가 여럿일 때는 적용될 수 없다
+# SELECT MEMBER_NAME, REVIEW_TEXT, DATE_FORMAT(REVIEW_DATE, '%Y-%m-%d') AS REVIEW_DATE
+# FROM MEMBER_PROFILE AS T1
+#     JOIN REST_REVIEW AS T2
+#         ON T1.MEMBER_ID = T2.MEMBER_ID
+# WHERE T1.MEMBER_ID = (
+#     SELECT MEMBER_ID
+#     FROM REST_REVIEW
+#     GROUP BY MEMBER_ID
+#     ORDER BY COUNT(REVIEW_ID) DESC
+#     LIMIT 1
+#     )
+# ORDER BY REVIEW_DATE ASC, REVIEW_TEXT ASC;
