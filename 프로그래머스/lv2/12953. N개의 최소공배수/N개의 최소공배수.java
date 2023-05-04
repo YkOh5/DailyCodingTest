@@ -26,6 +26,7 @@ class Solution {
 }
 
 
+// 약수들을 찾는 과정을 최적화해서 별개의 반목문으로 시행하는 방식
 // import java.util.ArrayList;
 // import java.util.List;
 
