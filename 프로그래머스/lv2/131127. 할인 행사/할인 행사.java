@@ -15,15 +15,15 @@ class Solution {
                 clonedMap.put(discount[j], clonedMap.getOrDefault(discount[j], 0) - 1);
             }
 
-            boolean flag = true;
+            boolean chk = true;
             for (int count : clonedMap.values()) {
                 if (count > 0) {
-                    flag = false;
+                    chk = false;
                     break;
                 }
             }
 
-            if (flag) cnt++;
+            if (chk) cnt++;
         }
 
         return cnt;
