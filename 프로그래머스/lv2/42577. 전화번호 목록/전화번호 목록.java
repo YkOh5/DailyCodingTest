@@ -11,3 +11,26 @@ class Solution {
         return true;
     }
 }
+
+
+// 3중 반복문으로 일일이 비교하는 방식은 효율성이 매우 떨어진다
+// class Solution {
+//     public boolean solution(String[] phone_book) {
+//         for (int i = 0; i < phone_book.length; i++) {
+//             for (int j = 0; j < phone_book.length; j++) {
+//                 boolean isPrefix = true;
+//                 // 해당 전화번호의 길이가 다른 전화번호의 길이보다 짧거나 같을 때
+//                 if (i == j || phone_book[i].length() > phone_book[j].length()) continue;
+//                 for (int k = 0; k < phone_book[i].length(); k++) {
+//                     // 두 전화번호의 번호들을 차례대로 비교
+//                     if (phone_book[i].charAt(k) != phone_book[j].charAt(k)) {
+//                         isPrefix = false;
+//                         break;
+//                     }
+//                 }
+//                 if (isPrefix) return false;
+//             }
+//         }        
+//         return true;
+//     }
+// }
