@@ -2,24 +2,29 @@ import java.util.HashMap;
 
 class Solution {
     public int solution(String[] want, int[] number, String[] discount) {
+        // 회원자격 유지 기간 동안의 할인 제품과 그 수량을 매핑
         HashMap<String, Integer> discountedMap = new HashMap<>();
-        int membershipDuration = 10;
-        int cnt = 0;
+        int registratableDays = 0;   // 주어진 조건을 만족하는 회원등록이 가능한 날짜의 총 일수
+        int membershipDuration = 10;   // 회원자격 유지 기간
+        
+        // 할인행사 첫 번째 날에 회원등록을 한 경우
         for (int i = 0; i < membershipDuration; i++) {
             discountedMap.put(discount[i], discountedMap.getOrDefault(discount[i], 0) + 1);
         }
-        if(isValidPeriod(want, number, discountedMap)) cnt++;
+        if(isValidPeriod(want, number, discountedMap)) registratableDays++;
         
+        // 그 이후에 회원등록을 한 경우
         for (int i = membershipDuration; i < discount.length; i++) {
             discountedMap.put(discount[i - membershipDuration], discountedMap.getOrDefault(discount[i - membershipDuration], 0) - 1);
             discountedMap.put(discount[i], discountedMap.getOrDefault(discount[i], 0) + 1);
             
-            if(isValidPeriod(want, number, discountedMap)) cnt++;
+            if(isValidPeriod(want, number, discountedMap)) registratableDays++;
         }        
         
-        return cnt;
+        return registratableDays;
     }
     
+    // 해당 기간 동안 원하는 제품들을 모두 구매할 수 있는지의 여부를 판별
     private boolean isValidPeriod(String[] want, int[] number, HashMap<String, Integer> discountedMap) {
         for (int i = 0; i < want.length; i++) {
             if (discountedMap.getOrDefault(want[i], 0) < number[i]) return false;
