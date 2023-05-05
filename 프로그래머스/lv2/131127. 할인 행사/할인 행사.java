@@ -1,34 +1,28 @@
-
-import java.util.HashMap;
+import java.util.*;
 
 class Solution {
-    public int solution(String[] want, int[] number, String[] discount) {
-        HashMap<String, Integer> itemMap = new HashMap<String, Integer>();
-        int sum = 0;
-        for (int i = 0; i < want.length; i++) {
-            itemMap.put(want[i], number[i]);
-            sum += number[i];
-        }
-        
-        int cnt = 0;
-        for (int i = 0; i < discount.length; i++) {
-            HashMap<String, Integer> clonedMap = (HashMap<String, Integer>)itemMap.clone();   
-            for (int j = i; j < i + 10; j++) {
-                if (j >= discount.length) continue;
-                clonedMap.put(discount[j], clonedMap.getOrDefault(discount[j], 0) - 1);
+        public int solution(String[] want, int[] number, String[] discount) {
+            int answer = 0;
+            int left = 0;
+            int right = 9;
+            Map<String, Integer> map = new HashMap<>();
+            for(int i =0;i<10;i++) map.put(discount[i], map.getOrDefault(discount[i],0)+1);
+            while(right < discount.length){
+                if(check(map,want,number)) answer++;
+
+                right++;
+                if(right < discount.length)
+                    map.put(discount[right], map.getOrDefault(discount[right],0)+1);
+                map.put(discount[left],map.get(discount[left])-1);
+                left++;
             }
-            
-            boolean chk = true;
-            for (int count : clonedMap.values()) {
-                if (count > 0) {
-                    chk = false;
-                    break;
-                }
-            }
-            
-            if (chk) cnt++;
+
+            return answer;
         }
-        
-        return cnt;
+        private boolean check(Map<String,Integer> map,String[] want,int[] number){
+            for(int i =0;i<want.length;i++){
+                if(map.getOrDefault(want[i],0) != number[i]) return false;
+            }
+            return true;
+        }
     }
-}
