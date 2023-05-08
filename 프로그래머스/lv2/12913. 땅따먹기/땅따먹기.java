@@ -1,35 +1,61 @@
+import java.util.Arrays;
+
 class Solution {
     int solution(int[][] land) {
         int[][] dp = new int[land.length][land[0].length];
-        int len = dp.length;
         for (int i = 0; i < land.length; i++) {
             for (int j = 0; j < land[i].length; j++) {
                 dp[i][j] = land[i][j];
             }
         }
-        int max = 0, maxIdx = 0;
-        int secMax = 0, secMaxIdx = 0;
         
-        for (int i = 0; i < dp.length - 1; i++) {
-            max = secMax = 0;
-            
-            for (int j = 0; j < dp[i].length; j++) {
-                if (dp[i][j] >= max) {
-                    secMax = max;
-                    secMaxIdx = maxIdx;
-                    max = dp[i][j];
-                    maxIdx = j;                    
-                } else if (dp[i][j] >= secMax) {
-                    secMax = dp[i][j];
-                    secMaxIdx = j;
+        for (int i = 0; i < land.length - 1; i++) {
+            for (int j = 0; j < land[i].length; j++) {
+                for (int k = 0; k < land[i].length; k++) {
+                    if (j == k) continue;
+                    dp[i + 1][k] = Math.max(dp[i + 1][k], land[i + 1][k] + dp[i][j]);
                 }
-            }
-            
-            for (int k = 0; k < land[i].length; k++) {
-                dp[i + 1][k] += (k != maxIdx)? max : secMax;
             }
         }
         
-        return Math.max(Math.max(dp[len - 1][0], dp[len - 1][1]), Math.max(dp[len - 1][2], dp[len - 1][3]));
+        int maxScore = 0;
+        for (int score : dp[land.length - 1]) {
+            maxScore = Math.max(maxScore, score);
+        }
+        
+        return maxScore;
     }
 }
+
+
+// class Solution {
+//     int solution(int[][] land) {
+//         for (int i = 0; i < land.length - 1; i++) {
+//             int max = 0, maxIdx = 0;
+//             int secMax = 0, secMaxIdx = 0;
+
+//             for (int j = 0; j < land[i].length; j++) {
+//                 if (land[i][j] >= max) {
+//                     secMax = max;
+//                     secMaxIdx = maxIdx;
+//                     max = land[i][j];
+//                     maxIdx = j;
+//                 } else if (land[i][j] >= secMax) {
+//                     secMax = land[i][j];
+//                     secMaxIdx = j;
+//                 }
+//             }
+
+//             for (int k = 0; k < land[i + 1].length; k++) {
+//                 land[i + 1][k] += (k != maxIdx)? max : secMax;
+//             }
+//         }
+        
+//         int maxScore = 0;
+//         for (int score : land[land.length - 1]) {
+//             maxScore = Math.max(maxScore, score);
+//         }
+
+//         return maxScore;
+//     }
+// }
