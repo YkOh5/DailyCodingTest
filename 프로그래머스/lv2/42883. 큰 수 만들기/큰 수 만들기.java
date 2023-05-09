@@ -23,19 +23,21 @@ class Solution {
             }
         }
         
-        StringBuilder answer = new StringBuilder();        
-        // 역순으로 이어붙이기
-        while (!stack.isEmpty()) {
-            answer.insert(0, stack.pop());
-        }        
-        return answer.toString();
         
+        char[] answer = new char[number.length() - k]; 
+        
+        // 역순으로 이어붙이기
+        for (int i = 0; i < answer.length; i++) {
+            answer[i] = stack.get(i);
+        }
+        
+        return new String(answer);
+
 //      반환부를 StringBuilder 대신 char 배열로 대체하면 처리속도가 10배 정도 빨라진다.
-//      StringBuilder가 String보다야 빠르지만, String 계열이라 처리속도면에서는 어쩔 수 없나보다.
-//      char[] answer = new char[number.length() - k];        
+//      char[] answer = new char[number.length() - k];
 //      for (int i = 0; i < answer.length; i++) {
 //          answer[i] = stack.get(i);
-//      }        
+//      }      
 //      return new String(answer);
     }
 }
