@@ -21,8 +21,7 @@ class Solution {
             if (stack.size() < number.length() - k) {
                 stack.push(number.charAt(i));
             }
-        }
-        
+        }        
         
         char[] answer = new char[number.length() - k]; 
         
@@ -33,6 +32,7 @@ class Solution {
         
         return new String(answer);
 
+        
 //      반환부를 StringBuilder 대신 char 배열로 대체하면 처리속도가 10배 정도 빨라진다.
 //      char[] answer = new char[number.length() - k];
 //      for (int i = 0; i < answer.length; i++) {
