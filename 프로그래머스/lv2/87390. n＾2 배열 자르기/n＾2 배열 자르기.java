@@ -7,8 +7,7 @@ class Solution {
             int quotient = (int)(i / n);   // 몫
             int remainder = (int)(i % n);   // 나머지
             
-            if (quotient <= remainder ) answer[idx++] = remainder + 1;
-            else answer[idx++] = quotient + 1;
+            answer[idx++] = Math.max(quotient, remainder) + 1;
         }
         
         return answer;
