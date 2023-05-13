@@ -14,15 +14,14 @@ class Solution {
             String entry = city.toLowerCase();
             
             if (cache.contains(entry)) {
-                cache.remove(cache.indexOf(entry));
-                cache.add(entry);
+                cache.remove(cache.indexOf(entry));                
                 latency++;
-            } else {
-                cache.add(entry);
+            } else if (cache.size() == cacheSize) {
+                cache.remove(0);                
                 latency += 5;
-            }
+            } else latency += 5;
             
-            if (cache.size() > cacheSize) cache.remove(0);
+            cache.add(entry);
         }
         
         return latency;
