@@ -1,3 +1,5 @@
+// 최대값 1백만이 주어진 경우 이를 3진수로 변환하면 약 100억으로 이는 int의 범위인 +-21억 가량을 벗어나므로 long을 써야 한다
+
 class Solution {
     private String convertedNumber;
     private StringBuilder sb = new StringBuilder();
