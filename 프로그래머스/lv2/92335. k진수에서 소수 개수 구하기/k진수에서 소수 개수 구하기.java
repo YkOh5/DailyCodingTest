@@ -23,7 +23,7 @@ class Solution {
         return cntPrimeNums;
     }
     
-    // for문의 조건을 (int i = 2; i * i <= number; i++)으로 설정하면 시간초과 오류가 발생!!
+    // for문의 조건을 (int i = 2; i * i <= number; i++)으로 설정하면 i * i에서 정수형 overflow가 발생!!
     // (long i = 2; i * i <= number; i++) 혹은 (int i = 2; i <= Math.sqrt(number); i++)으로 설정해야 한다
     private boolean isPrime(long number) {
         if (number <= 1) return false;
