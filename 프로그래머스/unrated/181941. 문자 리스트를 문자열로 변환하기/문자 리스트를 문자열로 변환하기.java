@@ -6,3 +6,10 @@ class Solution {
         return sb.toString();
     }
 }
+
+
+// class Solution {
+//     public String solution(String[] arr) {        
+//         return String.join("", arr);
+//     }
+// }
