@@ -1,18 +1,14 @@
-import java.util.*;
+import java.util.ArrayList;
 
 class Solution {
-    public int[] solution(String my_string) {
-
-        my_string = my_string.replaceAll("[a-z]","");
-
-        int[] answer = new int[my_string.length()];
-
-        for(int i =0; i<my_string.length(); i++){
-            answer[i] = my_string.charAt(i) - '0';
+    public Integer[] solution(String my_string) {
+        ArrayList<Integer> numList = new ArrayList<>();
+        for (char c : my_string.toCharArray()) {
+            if (Character.isDigit(c)) numList.add(Character.getNumericValue(c));
         }
 
-        Arrays.sort(answer);
+        numList.sort(null);
 
-        return answer;
+        return numList.toArray(new Integer[0]);
     }
 }
