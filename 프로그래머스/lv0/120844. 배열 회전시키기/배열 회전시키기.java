@@ -1,25 +1,26 @@
 class Solution {
+    private int[] rotatedNums;
+    
     public int[] solution(int[] numbers, String direction) {        
+        rotatedNums = new int[numbers.length];
         return (direction.equals("left"))? rotateLeft(numbers) : rotateRight(numbers);
     }
     
     private int[] rotateLeft(int[] numbers) {
-        int tmp = numbers[0];
-        for (int i = 1; i < numbers.length; i++) {
-            numbers[i - 1] = numbers[i];
+        rotatedNums[rotatedNums.length - 1] = numbers[0];
+        for (int i = 0; i < numbers.length - 1; i++) {
+            rotatedNums[i] = numbers[i + 1];
         }
-        numbers[numbers.length - 1] = tmp;
         
-        return numbers;
+        return rotatedNums;
     }
     
     private int[] rotateRight(int[] numbers) {
-        int tmp = numbers[numbers.length - 1];
-        for (int i = numbers.length - 2; i >= 0; i--) {
-            numbers[i + 1] = numbers[i];
-        }
-        numbers[0] = tmp;
+        rotatedNums[0] = numbers[numbers.length - 1];
+        for (int i = 1; i < numbers.length; i++) {
+            rotatedNums[i] = numbers[i - 1];
+        }        
         
-        return numbers;
+        return rotatedNums;
     }
 }
