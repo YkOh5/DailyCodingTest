@@ -7,6 +7,6 @@ class Solution {
         
 //         return -1;
         
-        return ("a" + String.valueOf(num)).indexOf(Integer.toString(k));
+        return ("a" + num).indexOf(Integer.toString(k));
     }
 }
