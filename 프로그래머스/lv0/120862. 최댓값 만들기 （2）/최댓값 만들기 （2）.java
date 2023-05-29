@@ -12,7 +12,8 @@ class Solution {
 }
 
 
-// 정렬을 이용한 방식은 코드 자체는 더 간단하지만 처리속도가 느리다
+// 위쪽 코드의 시간복잡도는 O(N^2)이고, 아래쪽 코드의 시간복잡도는 O(N * log N)이므로
+// 배열의 크기가 커질수록 아래의 코드가 더 효율적이다
 // import java.util.Arrays;
 
 // class Solution {
