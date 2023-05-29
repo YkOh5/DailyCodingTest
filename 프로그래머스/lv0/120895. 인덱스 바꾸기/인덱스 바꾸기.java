@@ -1,11 +1,11 @@
 class Solution {
     public String solution(String my_string, int num1, int num2) {
-        String answer = "";
-        String[] arr = my_string.split("");
-        String temp = arr[num1];
-        arr[num1] = arr[num2];
-        arr[num2] = temp;
-        
-        return String.join("", arr);
+
+        char[] ch = my_string.toCharArray();
+
+        ch[num1] = my_string.charAt(num2);
+        ch[num2] = my_string.charAt(num1);
+
+        return String.valueOf(ch);        
     }
 }
