@@ -1,26 +1,29 @@
 import java.util.HashMap;
 
 class Solution {
+    private HashMap<String, String> morseMap;
+    private String morse = "'.-':'a','-...':'b','-.-.':'c','-..':'d','.':'e','..-.':'f','--.':'g','....':'h','..':'i','.---':'j','-.-':'k','.-..':'l','--':'m','-.':'n','---':'o','.--.':'p','--.-':'q','.-.':'r','...':'s','-':'t','..-':'u','...-':'v','.--':'w','-..-':'x','-.--':'y','--..':'z'";
+
     public String solution(String letter) {
-        String morseStr = "'.-':'a','-...':'b','-.-.':'c','-..':'d','.':'e','..-.':'f',"
-                + "'--.':'g','....':'h','..':'i','.---':'j','-.-':'k','.-..':'l',"
-                + "'--':'m','-.':'n','---':'o','.--.':'p','--.-':'q','.-.':'r',"
-                + "'...':'s','-':'t','..-':'u','...-':'v','.--':'w','-..-':'x',"
-                + "'-.--':'y','--..':'z'";
-        String[] morseArr = morseStr.split(",");
-        String[] letterArr = letter.split(" ");
+        morseMap = buildMorseMap(morse);
 
-        HashMap<String, String> morse = new HashMap<String, String>();
+        return decode(letter);
+    }
 
-        for (int i = 0; i < morseArr.length; i++) {
-            morseArr[i] = morseArr[i].replace("'", "");
-            int idx = morseArr[i].indexOf(":");
-            morse.put(morseArr[i].substring(0, idx), morseArr[i].substring(idx+1));
+    private HashMap<String, String> buildMorseMap(String morse) {
+        HashMap<String, String> morseMap = new HashMap<>();
+        for (String code : morse.replace("'", "").split(",")) {
+            String[] dotAndAlphabet = code.split(":");
+            morseMap.put(dotAndAlphabet[0], dotAndAlphabet[1]);
         }
 
+        return morseMap;
+    }
+
+    private String decode(String letter) {
         StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < letterArr.length; i++) {
-            sb.append(morse.get(letterArr[i]));
+        for (String ditDah : letter.split(" ")) {
+            sb.append(morseMap.get(ditDah));
         }
 
         return sb.toString();
