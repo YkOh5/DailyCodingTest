@@ -1,14 +1,20 @@
+import java.util.*;
 class Solution {
     public String solution(String letter) {
         String answer = "";
-        String[] morse = {".-","-...","-.-.","-..",".","..-.","--.","....","..",".---","-.-",".-..","--","-.","---",".--.","--.-",".-.","...","-","..-","...-",".--","-..-","-.--","--.."};
-        String[] word = letter.split(" ");
+        String[] morse = {".-","-...","-.-.","-..",".","..-.","--.","....","..",
+                ".---","-.-",".-..","--","-.","---",".--.","--.-",".-.",
+                "...","-","..-","...-",".--","-..-","-.--","--.."};
 
-        for(int i=0;i<word.length;i++){
-            for(int j=0;j<morse.length;j++){
-                if(word[i].equals(morse[j])) answer+=(char)(j+97);
-            }
-        }
+        // Using Map Structure, matching <'morse' : 'alphabet'> 
+        Map<String, Character> map = new HashMap<>();
+        for(int i=0; i< morse.length; i++) 
+            map.put(morse[i], (char)(97+i));
+
+        // letter split and interpret
+        String[] words = letter.split(" ");
+        for(String x :words) 
+            answer += map.get(x);
 
         return answer;
     }
