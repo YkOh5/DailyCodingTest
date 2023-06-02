@@ -1,21 +1,28 @@
-import java.util.*;
+import java.util.HashMap;
+
 class Solution {
     public String solution(String letter) {
-        String answer = "";
-        String[] morse = {".-","-...","-.-.","-..",".","..-.","--.","....","..",
-                ".---","-.-",".-..","--","-.","---",".--.","--.-",".-.",
-                "...","-","..-","...-",".--","-..-","-.--","--.."};
+        String morseStr = "'.-':'a','-...':'b','-.-.':'c','-..':'d','.':'e','..-.':'f',"
+                + "'--.':'g','....':'h','..':'i','.---':'j','-.-':'k','.-..':'l',"
+                + "'--':'m','-.':'n','---':'o','.--.':'p','--.-':'q','.-.':'r',"
+                + "'...':'s','-':'t','..-':'u','...-':'v','.--':'w','-..-':'x',"
+                + "'-.--':'y','--..':'z'";
+        String[] morseArr = morseStr.split(",");
+        String[] letterArr = letter.split(" ");
 
-        // Using Map Structure, matching <'morse' : 'alphabet'> 
-        Map<String, Character> map = new HashMap<>();
-        for(int i=0; i< morse.length; i++) 
-            map.put(morse[i], (char)(97+i));
+        HashMap<String, String> morse = new HashMap<String, String>();
 
-        // letter split and interpret
-        String[] words = letter.split(" ");
-        for(String x :words) 
-            answer += map.get(x);
+        for (int i = 0; i < morseArr.length; i++) {
+            morseArr[i] = morseArr[i].replace("'", "");
+            int idx = morseArr[i].indexOf(":");
+            morse.put(morseArr[i].substring(0, idx), morseArr[i].substring(idx+1));
+        }
 
-        return answer;
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < letterArr.length; i++) {
+            sb.append(morse.get(letterArr[i]));
+        }
+
+        return sb.toString();
     }
 }
