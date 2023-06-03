@@ -1,13 +1,19 @@
-import java.util.ArrayList;
+import java.util.*;
 
 class Solution {
-    public Integer[] solution(String[] intStrs, int k, int s, int l) {
-        ArrayList<Integer> intList = new ArrayList<>();
+    public int[] solution(String[] intStrs, int k, int s, int l) {
+        ArrayList<Integer> arrayList = new ArrayList<>();
+
         for (String intStr : intStrs) {
-            int target = Integer.parseInt(intStr.substring(s, s + l));
-            if (target > k) intList.add(target);
+            int result = Integer.parseInt(intStr.substring(s, s + l));
+            if (result > k)
+                arrayList.add(result);
         }
-        
-        return intList.toArray(new Integer[0]);
+
+        int idx = 0;
+        int[] answer = new int[arrayList.size()];
+        for (int data : arrayList)
+            answer[idx++] = data;
+        return answer;
     }
 }
