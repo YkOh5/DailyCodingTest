@@ -1,16 +1,18 @@
+import java.util.*;
+
 class Solution {
     public String solution(int[] numLog) {
-        StringBuilder sb = new StringBuilder();
-        for (int idx = 1; idx < numLog.length; idx++) {
-            int diff = numLog[idx] - numLog[idx - 1];            
-            switch (diff) {
-                case 1 -> sb.append('w');
-                case -1 -> sb.append('s');
-                case 10 -> sb.append('d');
-                case -10 -> sb.append('a');
-            }
+        int num = numLog[0];
+        StringBuffer sb = new StringBuffer();
+
+        for (int i = 1;i < numLog.length;i++) {
+            if (numLog[i] - num == 1) sb.append("w");
+            else if (numLog[i] - num == -1) sb.append("s");
+            else if (numLog[i] - num == 10) sb.append("d");
+            else sb.append("a");
+            num = numLog[i];
         }
-        
+
         return sb.toString();
     }
 }
