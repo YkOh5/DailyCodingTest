@@ -1,15 +1,13 @@
 class Solution {
     public int solution(int[] array) {
-        StringBuilder sb = new StringBuilder();        
-        for (int num : array) {
-            sb.append(num);
-        }
-        
-        int cnt = 0;
-        for (char c : sb.toString().toCharArray()) {
-            if (Character.getNumericValue(c) == 7) cnt++;
-        }
-        
-        return cnt;
+        int answer = 0;
+
+        for(int i : array){
+            while(i>0){
+                if(i%10 == 7) answer++;
+                i/=10;
+            }
+        }        
+        return answer;
     }
 }
