@@ -1,21 +1,20 @@
-import java.util.LinkedHashSet;
+import java.util.ArrayList;
 
 class Solution {
     public Integer[] solution(int n) {
-        LinkedHashSet<Integer> primeNumbers = new LinkedHashSet<>();
-
-        int i = 2;
-        while (n != 0 && i <= n) {
-            if (n % i == 0) {
-                primeNumbers.add(i);
-                n /= i;
-            } else {
-                i++;
-            }
+        ArrayList<Integer> primeList = new ArrayList<>();
+        for (int i = 2; i <= n; i++) {
+            if (n % i == 0 && isPrime(i)) primeList.add(i);
         }
 
-//        System.out.println(primeNumbers);
+        return primeList.toArray(new Integer[0]);
+    }
 
-        return primeNumbers.toArray(new Integer[0]);
+    private boolean isPrime(int number) {
+        for (int i = 2; i <= Math.sqrt(number); i++) {
+            if (number % i == 0) return false;
+        }
+
+        return true;
     }
 }
