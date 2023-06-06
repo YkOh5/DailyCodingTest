@@ -1,6 +1,8 @@
+import java.util.Arrays;
+
 class Solution {
     public String[] solution(String myStr) {
-        String[] answer = myStr.replaceAll("[a-c]", " ").trim().split("\\s+");
-        return (answer[0].equals(""))? new String[]{"EMPTY"} : answer;
+        String[] arr = Arrays.stream(myStr.split("[abc]+")).filter(str -> !str.isEmpty()).toArray(String[]::new);
+        return arr.length == 0 ? new String[] { "EMPTY" } : arr;
     }
 }
