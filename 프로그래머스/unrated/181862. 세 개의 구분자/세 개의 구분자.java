@@ -1,18 +1,27 @@
-import java.util.StringTokenizer;
+import java.util.ArrayList;
+
 class Solution {
     public String[] solution(String myStr) {
-        String[] answer = {};
-        StringTokenizer st = new StringTokenizer(myStr,"abc");
-        if(st.countTokens() != 0){
-            answer = new String[st.countTokens()];
-            for(int i=0; i<answer.length; i++){
-                answer[i] = st.nextToken();
+        ArrayList<String> strList = new ArrayList<>();
+        StringBuilder sb = new StringBuilder();
+        for (char c : myStr.toCharArray()) {
+            if (c != 'a' && c != 'b' && c != 'c') sb.append(c);
+            else if (sb.length() != 0) {
+                strList.add(sb.toString());
+                sb.setLength(0);
             }
-        }else{
-            answer = new String[1];
-            answer[0] = "EMPTY";
         }
-
-        return answer;
+        if (sb.length() != 0) strList.add(sb.toString());
+        
+        return strList.size() == 0? new String[]{"EMPTY"} : strList.toArray(new String[0]);
     }
 }
+
+
+
+// class Solution {
+//     public String[] solution(String myStr) {
+//         String[] answer = myStr.replaceAll("[a-c]+", " ").trim().split("\\s+");
+//         return (answer[0].equals(""))? new String[]{"EMPTY"} : answer;
+//     }
+// }
