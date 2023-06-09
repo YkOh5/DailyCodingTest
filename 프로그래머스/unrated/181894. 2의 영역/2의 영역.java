@@ -2,8 +2,8 @@ import java.util.Arrays;
 
 class Solution {
     public int[] solution(int[] arr) {
-        int startIdx = 0;
-        int endIdx = 0;
+        int startIdx = -1;
+        int endIdx = -1;
         boolean contains2 = false;
         
         for (int i = 0; i < arr.length; i++) {
