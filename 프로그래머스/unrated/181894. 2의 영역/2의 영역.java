@@ -12,8 +12,7 @@ class Solution {
                 if (startIdx == -1) {
                     startIdx = i;
                     endIdx = i;
-                }
-                else endIdx = i;
+                } else endIdx = i;
             }
         }
                         
