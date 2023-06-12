@@ -4,18 +4,19 @@ class Solution {
     public Integer[] solution(int[] arr, int[][] queries) {
         ArrayList<Integer> numList = new ArrayList<>();
         for (int[] query : queries) {
-            int targetNum = Integer.MAX_VALUE;
-            boolean containsTargetNum = false;
+            int validNum = Integer.MAX_VALUE;
+            boolean containsValidNum = false;
             for (int idx = query[0]; idx <= query[1]; idx++) {                
                 if (arr[idx] > query[2]) {
-                    targetNum = Math.min(targetNum, arr[idx]);
-                    containsTargetNum = true;
+                    validNum = Math.min(validNum, arr[idx]);
+                    containsValidNum = true;
                 }
             }
-            targetNum = (containsTargetNum)? targetNum : -1;
-            numList.add(targetNum);
+            validNum = (containsValidNum)? validNum : -1;
+            numList.add(validNum);
         }
         
         return numList.toArray(new Integer[0]);
+        // return numList.stream().mapToInt(Integer::intValue).toArray();
     }
 }
