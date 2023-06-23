@@ -47,3 +47,28 @@ class Solution {
         }
     }
 }
+
+
+// List.indexOf()를 이용해서 더 간단한 코드로 해결할 수 있다.
+// import java.util.*;
+
+// class Solution {
+//     public int[] solution(int[][] studentScores) {
+//         List<Integer> totalScoreList = new ArrayList<>();
+//         for (int[] subjectScores : studentScores) {
+//             int sum = 0;
+//             for (int score : subjectScores) {
+//                 sum += score;
+//             }
+//             totalScoreList.add(sum);            
+//         }
+//         Collections.sort(totalScoreList, Collections.reverseOrder());
+        
+//         int[] answer = new int[studentScores.length];
+//         for (int i = 0; i < studentScores.length; i++) {
+//             answer[i] = totalScoreList.indexOf(studentScores[i][0] + studentScores[i][1]) + 1;
+//         }
+        
+//         return answer;
+//     }
+// }
