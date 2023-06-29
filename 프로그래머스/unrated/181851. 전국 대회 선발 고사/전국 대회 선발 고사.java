@@ -16,10 +16,24 @@ class Solution {
 
 
 
+// PriorityQueue를 이용한 풀이
+// import java.util.PriorityQueue;
+// class Solution {
+//     public int solution(int[] rank, boolean[] attendance) {
+//         PriorityQueue<Integer> que = new PriorityQueue<>((a, b) -> rank[a] - rank[b]);
+//         for (int i = 0; i < attendance.length; i++) {
+//             if (attendance[i])
+//                 que.add(i);
+//         }
+//         return que.poll() * 10000 + que.poll() * 100 + que.poll();
+//     }
+// }
+
+
+
 // Stream을 이용한 풀이
 // import java.util.Comparator;
 // import java.util.stream.IntStream;
-
 // class Solution {
 //     public int solution(int[] rank, boolean[] attendance) {
 //         return IntStream.range(0, rank.length)
