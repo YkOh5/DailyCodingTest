@@ -6,6 +6,7 @@ class Solution {
         for (int i = 0; i < rank.length; i++) {
             if (attendance[i]) idxList.add(i);
         }
+        
         Collections.sort(idxList, (num1, num2) -> (rank[num1] - rank[num2]));
         
         return 10000 * idxList.get(0) + 100 * idxList.get(1) + idxList.get(2);
