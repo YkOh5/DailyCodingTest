@@ -1,18 +1,34 @@
-import java.util.ArrayList;
-import java.util.Collections;
+import java.util.*;
 
 class Solution {
     public int solution(int[] rank, boolean[] attendance) {
-        ArrayList<int[]> validRankList = new ArrayList<>();
+        ArrayList<Integer> idxList = new ArrayList<>();
         for (int i = 0; i < rank.length; i++) {
-            if (attendance[i]) validRankList.add(new int[]{rank[i], i});
+            if (attendance[i]) idxList.add(i);
         }
+        Collections.sort(idxList, (num1, num2) -> (rank[num1] - rank[num2]));
         
-        Collections.sort(validRankList, (a, b) -> (a[0] - b[0]));
-                
-        return 10000 * validRankList.get(0)[1] + 100 * validRankList.get(1)[1] + validRankList.get(2)[1];
+        return 10000 * idxList.get(0) + 100 * idxList.get(1) + idxList.get(2);
     }
 }
+
+
+
+// import java.util.ArrayList;
+// import java.util.Collections;
+
+// class Solution {
+//     public int solution(int[] rank, boolean[] attendance) {
+//         ArrayList<int[]> validRankList = new ArrayList<>();
+//         for (int i = 0; i < rank.length; i++) {
+//             if (attendance[i]) validRankList.add(new int[]{rank[i], i});
+//         }
+        
+//         Collections.sort(validRankList, (a, b) -> (a[0] - b[0]));
+                
+//         return 10000 * validRankList.get(0)[1] + 100 * validRankList.get(1)[1] + validRankList.get(2)[1];
+//     }
+// }
 
 
 
