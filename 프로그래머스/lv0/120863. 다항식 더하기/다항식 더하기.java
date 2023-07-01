@@ -1,15 +1,45 @@
+import java.util.StringTokenizer;
+
 class Solution {
     public String solution(String polynomial) {
-        int xCount = 0;
-        int num = 0;
+        StringTokenizer st = new StringTokenizer(polynomial, " + ");
+        StringBuilder sb = new StringBuilder();
 
-        for (String s : polynomial.split(" ")) {
-            if (s.contains("x")) {
-                xCount += s.equals("x") ? 1 : Integer.parseInt(s.replaceAll("x", ""));
-            } else if (!s.equals("+")) {
-                num += Integer.parseInt(s);
+        int xsum = 0;
+        int sum = 0;
+        while (st.hasMoreTokens()) {
+            String str = st.nextToken();
+
+            if (str.contains("x")) {
+                String x = str.replace("x", "");
+                System.out.println(x);
+                if (x.isBlank()) {
+                    xsum += 1;
+                } else {
+                    xsum += Integer.parseInt(x);
+                }
+            } else {
+                sum += Integer.parseInt(str);
             }
         }
-        return (xCount != 0 ? xCount > 1 ? xCount + "x" : "x" : "") + (num != 0 ? (xCount != 0 ? " + " : "") + num : xCount == 0 ? "0" : "");
+
+        if (xsum == 0) {
+            sb.append(sum);
+        } else if (sum == 0) {
+            if (xsum == 1) {
+                sb.append("x");
+            } else {
+                sb.append(xsum).append("x");
+            }
+        } else {
+            if (xsum == 1) {
+                sb.append("x").append(" + ").append(sum);
+            } else {
+                sb.append(xsum).append("x").append(" + ").append(sum);    
+            }
+
+        }
+
+        return sb.toString();
     }
 }
