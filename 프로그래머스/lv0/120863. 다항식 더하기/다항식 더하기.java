@@ -1,27 +1,24 @@
 class Solution {
-    public String solution(String polynomial) {
-        int a = 0, b = 0;
+    private int coefA = 0, coefB = 0;
+    
+    public String solution(String polynomial) {        
         for (String term : polynomial.split(" \\+ ")) {
-            if (term.equals("x")) a++;
-            else if (term.contains("x")) a += Integer.parseInt(term.replace("x", ""));
-            else b += Integer.parseInt(term);
+            if (term.equals("x")) coefA++;
+            else if (term.contains("x")) coefA += Integer.parseInt(term.replace("x", ""));
+            else coefB += Integer.parseInt(term);
         }        
         
-        return buildAnswer(a, b);
+        return buildAnswer(coefA, coefB);
     }
     
-    private String buildAnswer(int a, int b) {
+    private String buildAnswer(int coefA, int coefB) {
         StringBuilder sb = new StringBuilder();
-        
-        if (a == 0) sb.append(b);
+        if (coefA == 0) sb.append(coefB);
         else {
-            if (a == 1) sb.append("x");
-            else sb.append(a + "x");
-            
-            if (b != 0) sb.append(" + " + b);
+            if (coefA == 1) sb.append("x");
+            else sb.append(coefA + "x");
+            if (coefB != 0) sb.append(" + " + coefB);
         }
-        
-        
         
         return sb.toString();
     }
