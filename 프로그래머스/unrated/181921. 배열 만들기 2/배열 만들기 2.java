@@ -1,25 +1,25 @@
-import java.util.*;
+import java.util.ArrayList;
 
 class Solution {
-    public int[] deletes = {1, 2, 3, 4, 6, 7, 8, 9};
-    public int[] solution(int l, int r) {
-        ArrayList<Integer> arrayList = new ArrayList<>();
-        for (int i = l;i <= r;i++) {
-            boolean isDelete = false;
-            String value = Integer.toString(i);
-            for (int delete : deletes)
-                if (value.contains(Integer.toString(delete))) {
-                    isDelete = true;
-                    break;
-                }
+    public Integer[] solution(int l, int r) {
+        ArrayList<Integer> validNumList = new ArrayList<>();
+        // for (int number = l; number <= r; number++) {
+        //     if (isValidNumber(number)) validNumList.add(number);
+        // }
+        
+        for (int i = l; i <= r; i++) {
+            if (String.valueOf(i).replaceAll("[05]", "").length() == 0) validNumList.add(i);
+        }
 
-            if (isDelete) continue;
-            arrayList.add(i);
-        }       
-        int idx = 0;
-        int[] answer = new int[arrayList.size()];
-        for (int data : arrayList)
-            answer[idx++] = data;
-        return arrayList.size() == 0 ? new int[] {-1} : answer;
+        return (validNumList.size() == 0)? new Integer[]{-1} : validNumList.toArray(new Integer[0]);
+    }
+
+    private boolean isValidNumber(int number) {
+        for (char c : String.valueOf(number).toCharArray()) {
+            int targetNum = Character.getNumericValue(c);
+            if (targetNum != 0 && targetNum != 5) return false;
+        }
+
+        return true;
     }
 }
