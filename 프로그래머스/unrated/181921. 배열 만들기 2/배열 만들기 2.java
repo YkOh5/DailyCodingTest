@@ -1,15 +1,36 @@
-import java.util.stream.IntStream;
+// import java.util.ArrayList;
+
+// class Solution {
+//     public Integer[] solution(int l, int r) {
+//         ArrayList<Integer> validNumList = new ArrayList<>();
+//         for (int number = l; number <= r; number++) {
+//             if (isValidNumber(number)) validNumList.add(number);
+//         }
+
+//         return (validNumList.size() == 0)? new Integer[]{-1} : validNumList.toArray(new Integer[0]);
+//     }
+
+//     private boolean isValidNumber(int number) {
+//         for (char c : String.valueOf(number).toCharArray()) {
+//             int targetNum = Character.getNumericValue(c);
+//             if (targetNum != 0 && targetNum != 5) return false;
+//         }
+
+//         return true;
+//     }
+// }
+
+
+
+import java.util.ArrayList;
 
 class Solution {
-    public int[] solution(int l, int r) {
-        int[] answer = IntStream.rangeClosed(l, r).filter(i -> {
-            while (i > 0) {
-                if (i % 5 != 0) return false;
-                i /= 10;
-            }
-            return true;
-        }).toArray();
+    public Integer[] solution(int l, int r) {
+        ArrayList<Integer> validNumList = new ArrayList<>();
+        for (int number = l; number <= r; number++) {
+            if (String.valueOf(number).replaceAll("[05]", "").isEmpty()) validNumList.add(number);
+        }
 
-        return answer.length == 0 ? new int[]{-1} : answer;
+        return (validNumList.size() == 0)? new Integer[]{-1} : validNumList.toArray(new Integer[0]);
     }
 }
