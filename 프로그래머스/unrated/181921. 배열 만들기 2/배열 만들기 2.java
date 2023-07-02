@@ -1,21 +1,21 @@
-import java.util.ArrayList;
+import java.util.stream.IntStream;
 
 class Solution {
-    public Integer[] solution(int l, int r) {
-        ArrayList<Integer> validNumList = new ArrayList<>();
-        for (int number = l; number <= r; number++) {
-            if (isValidNumber(number)) validNumList.add(number);
-        }
-        
-        return (validNumList.size() == 0)? new Integer[]{-1} : validNumList.toArray(new Integer[0]);
+    public int[] solution(int l, int r) {
+        int[] answer = IntStream.rangeClosed(l,r).filter(this::valid).toArray();
+        return answer.length==0?new int[]{-1}:answer;
     }
 
-    private boolean isValidNumber(int number) {
-        for (char c : String.valueOf(number).toCharArray()) {
-            int targetNum = Character.getNumericValue(c);
-            if (targetNum != 0 && targetNum != 5) return false;
+    private boolean valid(int i) {
+        boolean result = true;
+
+        for(char ch: String.valueOf(i).toCharArray()) {
+            if(ch != '0' && ch != '5') {
+                result = false;
+                break;
+            }
         }
 
-        return true;
+        return result;
     }
 }
