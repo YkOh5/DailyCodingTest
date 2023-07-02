@@ -7,7 +7,7 @@ class Solution {
             if (isValidNumber(number)) validNumList.add(number);
         }
         
-        return (validNumList.size() == 0)? new Integer[]{-1} : validNumList.toArray(new Integer[0]);
+        return (validNumList.isEmpty())? new Integer[]{-1} : validNumList.toArray(new Integer[0]);
     }
 
     private boolean isValidNumber(int number) {
