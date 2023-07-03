@@ -20,6 +20,7 @@ class Solution {
 
 
 
+// 입력값 중 중복되는 값들이 많을 때는 아래와 같은 코드가 더 유용하다.
 // import java.util.HashMap;
 
 // class Solution {
