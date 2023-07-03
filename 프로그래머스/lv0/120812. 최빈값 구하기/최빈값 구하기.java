@@ -1,23 +1,15 @@
 import java.util.HashMap;
 
 class Solution {
-    private HashMap<Integer, Integer> cntMap = new HashMap<>();
-    
     public int solution(int[] array) {
+        HashMap<Integer, Integer> cntMap = new HashMap<>();
+        int maxCnt = 0, domNum = 1;
         for (int number : array) {
             cntMap.put(number, cntMap.getOrDefault(number, 0) + 1);
-        }
-                
-        return getDominantNumber();
-    }
-    
-    private int getDominantNumber() {
-        int maxCnt = 0;
-        int domNum = -1;
-        for (int key : cntMap.keySet()) {
-            int cnt = cntMap.get(key);
+            
+            int cnt = cntMap.get(number);
             if (cnt > maxCnt) {
-                domNum = key;
+                domNum = number;
                 maxCnt = cnt;
             } else if (cnt == maxCnt) domNum = -1;
         }
