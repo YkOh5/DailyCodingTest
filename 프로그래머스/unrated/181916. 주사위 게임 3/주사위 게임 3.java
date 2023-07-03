@@ -2,31 +2,49 @@ import java.util.*;
 
 class Solution {
     public int solution(int a, int b, int c, int d) {
-        int[] points = {a, b, c, d};
-        ArrayList<Integer> pointList = new ArrayList<>();
-        HashMap<Integer, Integer> pointMap = new HashMap<>();        
-        for (int point : points) {
-            if (!pointList.contains(point)) pointList.add(point);
-            pointMap.put(point, pointMap.getOrDefault(point, 0) + 1);
+        Map<Integer, Integer> map = new HashMap<>();
+        for (int data : new int[] {a, b, c, d}) {
+            if (map.containsKey(data)) map.put(data, map.get(data) + 1);
+            else map.put(data, 1);
         }
-        
-        pointList.sort((num1, num2) -> pointMap.get(num2) - pointMap.get(num1));
-        
-        int size = pointMap.keySet().size();
-        switch (size) {
-            case 2 -> {
-                int num1 = pointList.get(0), num2 = pointList.get(1);
-                if (pointMap.get(num1) == pointMap.get(num2))
-                    return (num1 + num2) * Math.abs(num1 - num2);
-                else return (int)Math.pow(10 * num1 + num2, 2);
-            }
-            case 3 -> {return pointList.get(1) * pointList.get(2);}
-            case 4 -> {
-                pointList.sort((num1, num2) -> num1 - num2);
-                return pointList.get(0);
+
+        PriorityQueue<Dice> pq = new PriorityQueue<>();
+        for (int key : map.keySet())
+            pq.add(new Dice(key, map.get(key)));
+
+        int answer = 0;
+        if (pq.size() == 1) answer = pq.poll().number * 1111;
+        else if (pq.size() == 3) {
+            pq.poll();
+            answer = pq.poll().number * pq.poll().number;
+        } else if (pq.size() == 4) {
+            pq.poll(); pq.poll(); pq.poll();
+            answer = pq.poll().number;
+        } else {
+            Dice maxDice = pq.poll();
+            Dice next = pq.poll();
+            if (maxDice.count == 3) {
+                answer = (10 * maxDice.number + next.number) * (10 * maxDice.number + next.number);
+            } else {
+                answer = (maxDice.number + next.number) * ((int)(Math.abs(maxDice.number - next.number)));
             }
         }
-        
-        return 1111 * a;
+        return answer;
+    }
+
+    public class Dice implements Comparable<Dice> {
+        int number;
+        int count;
+        public Dice(int number, int count) {
+            this.number = number;
+            this.count = count;
+        }
+
+        @Override
+        public int compareTo(Dice o) {
+            if (this.count == o.count)
+                return o.number - this.number;
+            return o.count - this.count;
+        }
     }
 }
