@@ -1,10 +1,10 @@
 # [level 0] OX퀴즈 - 120907 
 
-[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/120907) 
+[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/120907#) 
 
 ### 성능 요약
 
-메모리: 73.4 MB, 시간: 0.13 ms
+메모리: 77.8 MB, 시간: 0.10 ms
 
 ### 구분
 
