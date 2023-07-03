@@ -22,7 +22,6 @@ class Solution {
 }
 
 
-
 // class Solution {
 //     public String[] solution(String[] quiz) {        
 //         for (int idx = 0; idx < quiz.length; idx++) {
