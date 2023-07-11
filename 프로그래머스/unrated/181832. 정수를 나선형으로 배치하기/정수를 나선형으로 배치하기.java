@@ -1,3 +1,5 @@
+// 아래와 같은 방식보다는 변위를 사용한 코드가 유지보수 측면에서 더 좋을 수 있다
+
 class Solution {
     public int[][] solution(int n) {
         int[][] answer = new int[n][n];
