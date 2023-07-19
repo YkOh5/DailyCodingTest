@@ -18,7 +18,7 @@ class Solution {
         // 기초적인 방법으로 최소/최대값을 구하고, StringBuilder를 이용해서 이어붙이는 방식이 훨씬 빠르다
         // String[] strArr = s.split(" ");
         // int min = Integer.MAX_VALUE;
-        // int max = Integer.MIN_VALUE;        
+        // int max = Integer.MIN_VALUE;
         // for (String item : strArr) {
         //     if (Integer.parseInt(item) < min) {
         //         min = Integer.parseInt(item);
@@ -26,12 +26,8 @@ class Solution {
         //     if (Integer.parseInt(item) > max) {
         //         max = Integer.parseInt(item);
         //     }
-        // }        
-        // StringBuffer sb = new StringBuffer();
-        // sb.append(min);
-        // sb.append(" ");
-        // sb.append(max);        
-        // return sb.toString();
+        // }
+        // return new StringBuilder().append(min).append(" ").append(max).toString();
         
         
         // Stream을 활용하면 처리속도는 다소 떨어지지만, 훨씬 간결한 코드로 해결 가능
