@@ -10,18 +10,18 @@ class Solution {
     
     public int solution(String word) {
         this.word = word;        
-        getValidCnt(new StringBuilder());
+        getValidCnt(new String());
         
         return answer;
     }
 
-    private void getValidCnt(StringBuilder curStr) {
+    private void getValidCnt(String curStr) {
         if (curStr.length() <= maxLength) {
-            if (word.equals(curStr.toString())) answer = cnt;
+            if (word.equals(curStr)) answer = cnt;
             cnt++;
             
             for (String vowel : vowels) {
-                getValidCnt(new StringBuilder(curStr).append(vowel));
+                getValidCnt(curStr + vowel);
             }
         }
     }
