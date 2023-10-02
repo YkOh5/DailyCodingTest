@@ -2,7 +2,8 @@ class Solution {
     public int solution(int number, int limit, int power) {        
         int answer = 0;
         for (int i = 1; i <= number; i++) {
-            answer += (getDivisorCnt(i) > limit)? power : getDivisorCnt(i);
+            int powerOriginal = getDivisorCnt(i);
+            answer += (powerOriginal > limit)? power : powerOriginal;
         }
         
         return answer;
