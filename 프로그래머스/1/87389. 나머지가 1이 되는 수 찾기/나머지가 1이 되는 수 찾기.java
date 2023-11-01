@@ -1,9 +1,16 @@
 class Solution {
     public int solution(int n) {
-        int answer = 0;
-        for (int i = 1; i <= n; i++) {
-            if (n % i == 1) return i;
+        for (int x = 2; x < n; x++) {
+            // n을 x로 나눈 나머지가 1인 경우
+            if (n % x == 1) {
+                return x;
+            }
         }
-        return answer;
+        
+        return -1;
+        
+        
+        // Stream을 활용하면 간결하게 해결 가능하지만, 처리속도는 상당히 떨어진다.
+        // return IntStream.range(2, n).filter(i -> n % i == 0).findFirst().orElse(-1);
     }
 }
