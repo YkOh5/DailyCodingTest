@@ -1,4 +1,4 @@
-import java.util.Stack;
+import java.util.*;
 
 class Solution {
     private final int[] discountRates = {10, 20, 30, 40};
@@ -11,6 +11,7 @@ class Solution {
         this.emoticons = emoticons;
 
         Stack<Integer> stack = new Stack<>();
+        
         searchGoalPoint(stack);
 
         return goalPoint;
