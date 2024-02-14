@@ -5,17 +5,17 @@ class Solution {
     private int[][] users;
     private int[] emoticons;
     private int[] goalPoint = new int[]{0, 0};    
-    
+
     public int[] solution(int[][] users, int[] emoticons) {
         this.users = users;
         this.emoticons = emoticons;
-        
+
         Stack<Integer> stack = new Stack<>();
         searchGoalPoint(stack);
-        
+
         return goalPoint;
     }
-    
+
     private void searchGoalPoint(Stack<Integer> stack) {
         if (stack.size() >= emoticons.length) {
             updateGoalPoint(stack);
@@ -27,25 +27,29 @@ class Solution {
             }
         }
     }
-    
+
     private void updateGoalPoint(Stack<Integer> stack) {
         int[] dcrArr = new int[emoticons.length];
         int subscriberCnt = 0;
         int totalSalesRevenue = 0;
-        
+
+        for (int i = 0; i < emoticons.length; i++) {
+            dcrArr[i] = stack.elementAt(i);
+        }
+
         for (int i = 0; i < users.length; i++) {
             int personalSpending = 0;
-            
+
             for (int j = 0; j < emoticons.length; j++) {
-                if (stack.elementAt(j) >= users[i][0]) {
-                    personalSpending += emoticons[j] * (100 - stack.elementAt(j)) / 100;
+                if (dcrArr[j] >= users[i][0]) {
+                    personalSpending += emoticons[j] * (100 - dcrArr[j]) / 100;
                 }
             }
-            
+
             if (personalSpending >= users[i][1]) subscriberCnt++;
             else totalSalesRevenue += personalSpending;
         }
-        
+
         if (subscriberCnt > goalPoint[0] || subscriberCnt == goalPoint[0] && totalSalesRevenue > goalPoint[1]) {
             goalPoint[0] = subscriberCnt;
             goalPoint[1] = totalSalesRevenue;
