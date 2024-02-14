@@ -33,16 +33,12 @@ class Solution {
         int subscriberCnt = 0;
         int totalSalesRevenue = 0;
         
-        for (int i = 0; i < emoticons.length; i++) {
-            dcrArr[i] = stack.elementAt(i);
-        }
-        
         for (int i = 0; i < users.length; i++) {
             int personalSpending = 0;
             
             for (int j = 0; j < emoticons.length; j++) {
-                if (dcrArr[j] >= users[i][0]) {
-                    personalSpending += emoticons[j] * (100 - dcrArr[j]) / 100;
+                if (stack.elementAt(j) >= users[i][0]) {
+                    personalSpending += emoticons[j] * (100 - stack.elementAt(j)) / 100;
                 }
             }
             
@@ -50,10 +46,8 @@ class Solution {
             else totalSalesRevenue += personalSpending;
         }
         
-        if (subscriberCnt > goalPoint[0]) {
+        if (subscriberCnt > goalPoint[0] || subscriberCnt == goalPoint[0] && totalSalesRevenue > goalPoint[1]) {
             goalPoint[0] = subscriberCnt;
-            goalPoint[1] = totalSalesRevenue;
-        } else if (subscriberCnt == goalPoint[0] && totalSalesRevenue > goalPoint[1]) {
             goalPoint[1] = totalSalesRevenue;
         }
     }
