@@ -1,4 +1,4 @@
-import java.util.*;
+import java.util.Stack;
 
 class Solution {
     private final int[] discountRates = {10, 20, 30, 40};
