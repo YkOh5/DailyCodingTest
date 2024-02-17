@@ -11,7 +11,6 @@ class Solution {
         this.emoticons = emoticons;
 
         Stack<Integer> stack = new Stack<>();
-        
         searchGoalPoint(stack);
 
         return goalPoint;
@@ -51,8 +50,10 @@ class Solution {
             else totalSalesRevenue += personalSpending;
         }
 
-        if (subscriberCnt > goalPoint[0] || subscriberCnt == goalPoint[0] && totalSalesRevenue > goalPoint[1]) {
+        if (subscriberCnt > goalPoint[0]) {
             goalPoint[0] = subscriberCnt;
+            goalPoint[1] = totalSalesRevenue;
+        } else if (subscriberCnt == goalPoint[0] && totalSalesRevenue > goalPoint[1]) {
             goalPoint[1] = totalSalesRevenue;
         }
     }
