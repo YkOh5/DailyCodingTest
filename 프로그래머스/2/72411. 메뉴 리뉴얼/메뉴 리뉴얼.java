@@ -22,7 +22,9 @@ class Solution {
             }
         }
     }
-
+    
+    // 부분집합을 구하는 코드를 응용해서
+    // 기존 주문들의 부분집합 중 원소의 개수가 새로운 코스요리를 구성하는 메뉴들의 개수와 일치하는 것들을 구한다
     private void getValidOrderSubsets(String sortedOrder, HashSet<Integer> dishCntSet, StringBuilder orderSubset, int index) {
         if (dishCntSet.contains(orderSubset.length())) {
             commonMenuMap.put(orderSubset.toString(), commonMenuMap.getOrDefault(orderSubset.toString(), 0) + 1);
