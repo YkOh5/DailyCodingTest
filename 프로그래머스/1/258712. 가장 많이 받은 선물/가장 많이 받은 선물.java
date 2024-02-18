@@ -26,8 +26,7 @@ class Solution {
                 int giveCnt = giverTakerMap.getOrDefault(new StringBuilder().append(friends[i]).append(" ").append(friends[j]).toString(), 0);
                 int takeCnt = giverTakerMap.getOrDefault(new StringBuilder().append(friends[j]).append(" ").append(friends[i]).toString(), 0);
                 
-                if (giveCnt > takeCnt) nextMonthGiftCnt++;
-                else if (giveCnt == takeCnt && giftIndexMap.getOrDefault(friends[i], 0) > giftIndexMap.getOrDefault(friends[j], 0)) nextMonthGiftCnt++;
+                if (giveCnt > takeCnt || giveCnt == takeCnt && giftIndexMap.getOrDefault(friends[i], 0) > giftIndexMap.getOrDefault(friends[j], 0)) nextMonthGiftCnt++;
             }
             
             maxNextMonthGiftCnt = Math.max(maxNextMonthGiftCnt, nextMonthGiftCnt);
