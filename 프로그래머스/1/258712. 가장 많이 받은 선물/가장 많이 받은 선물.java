@@ -36,3 +36,39 @@ class Solution {
         return maxNextMonthGiftCnt;
     }
 }
+
+
+
+// 아래의 코드처럼 친구들 개개인의 인덱스를 매핑한 후
+// 개인별 인덱스를 이차원배열의 인덱스로 활용하면 더 직관적이고 효율적으로 구현 가능
+// import java.util.*;
+
+// class Solution {
+//     public int solution(String[] friends, String[] gifts) {
+//         Map<String, Integer> map = new HashMap<>();
+//         for (int i = 0; i < friends.length; i++) {
+//             map.put(friends[i], i);
+//         }
+//         int[] index = new int[friends.length];
+//         int[][] record = new int[friends.length][friends.length];
+
+//         for (String str : gifts) {
+//             String[] cur = str.split(" ");
+//             index[map.get(cur[0])]++;
+//             index[map.get(cur[1])]--;
+//             record[map.get(cur[0])][map.get(cur[1])]++;
+//         }
+
+//        int ans = 0;
+//        for (int i = 0; i < friends.length; i++) {
+//            int cnt = 0;
+//            for (int j = 0; j < friends.length; j++) {
+//                if(i == j) continue;
+//                if (record[i][j] > record[j][i]) cnt++;
+//                else if (record[i][j] == record[j][i] && index[i] > index[j]) cnt++; 
+//            }
+//            ans = Math.max(cnt, ans);
+//        }
+//         return ans;
+//     }
+// }
