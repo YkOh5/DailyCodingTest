@@ -40,3 +40,27 @@ class Solution {
         return tube.toString();
     }
 }
+
+
+
+// Integer.toString(int number, int radix); 를 이용하면 진법을 간단히 변환할 수 있다
+// class Solution {
+//     public String solution(int n, int t, int m, int p) {
+//         StringBuilder convertedNums = new StringBuilder();
+//         int targetNum = 0;        
+//         while (convertedNums.length() < (t - 1) * m + p) {
+//             convertedNums.append(Integer.toString(targetNum, n));
+//             targetNum++;
+//         }
+        
+        
+//         StringBuilder tube = new StringBuilder();
+//         int targetIdx = p - 1;
+//         while (tube.length() < t) {
+//             tube.append(convertedNums.charAt(targetIdx));
+//             targetIdx += m;
+//         }
+        
+//         return tube.toString().toUpperCase();
+//     }
+// }
