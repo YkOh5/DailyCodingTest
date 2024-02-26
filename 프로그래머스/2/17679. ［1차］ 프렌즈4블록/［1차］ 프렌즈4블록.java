@@ -3,15 +3,13 @@ class Solution {
     private boolean[][] checked;
     private int[] di = {0, 1, 0, 1};
     private int[] dj = {0, 0, 1, 1};
-    private int removedBlockCnt = 0;    
-    private boolean removed;    
+    private int removedBlockCnt = 0;
+    private boolean removed;
     
     public int solution(int m, int n, String[] board) {
         this.board = new char[m][n];
         for (int i = 0; i < m; i++) {
-            for (int j = 0; j < n; j++) {
-                this.board[i][j] = board[i].charAt(j);
-            }
+            this.board[i] = board[i].toCharArray();
         }
         
         searchBoard();
