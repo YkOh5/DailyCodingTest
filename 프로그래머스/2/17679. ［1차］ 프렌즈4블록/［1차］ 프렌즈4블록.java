@@ -4,8 +4,7 @@ class Solution {
     private int[] di = {0, 1, 0, 1};
     private int[] dj = {0, 0, 1, 1};
     private int removedBlockCnt = 0;    
-    private boolean removed;
-    
+    private boolean removed;    
     
     public int solution(int m, int n, String[] board) {
         this.board = new char[m][n];
