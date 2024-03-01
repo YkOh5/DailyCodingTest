@@ -2,14 +2,15 @@ import java.util.*;
 
 class Solution {
     public String solution(String m, String[] musicInfos) {
-        String melody = getReplacedNotes(m);
-        String theMusic = "(None)";
         Integer maxDuration = Integer.MIN_VALUE;
+        String theMusic = "(None)";
+        String melody = getReplacedNotes(m);
         
         for (String musicInfo : musicInfos) {
             String[] musicInfoArr = musicInfo.split(",");
-            String notes = getReplacedNotes(musicInfoArr[3]);            
             int duration = getDuration(musicInfoArr[0], musicInfoArr[1]);
+            String notes = getReplacedNotes(musicInfoArr[3]);            
+            
             
             StringBuilder playedMusic = new StringBuilder();            
             for (int i = 0; i < duration; i++) {
