@@ -2,7 +2,7 @@ import java.util.*;
 
 class Solution {
     public String solution(String m, String[] musicInfos) {
-        String melody = getReplaced(m);
+        String melody = getReplacedNotes(m);
         String theMusic = "(None)";
         Integer maxDuration = Integer.MIN_VALUE;
         
@@ -11,13 +11,13 @@ class Solution {
             String startTime = st.nextToken();
             String endTime = st.nextToken();
             String title = st.nextToken();
-            String music = getReplaced(st.nextToken());
+            String notes = getReplacedNotes(st.nextToken());
             
             int duration = getDuration(startTime, endTime);
             StringBuilder playedMusic = new StringBuilder();
             
             for (int i = 0; i < duration; i++) {
-                playedMusic.append(music.charAt(i % music.length()));
+                playedMusic.append(notes.charAt(i % notes.length()));
             }
             
             if (playedMusic.toString().contains(melody) && duration > maxDuration) {
@@ -29,17 +29,17 @@ class Solution {
         return theMusic;
     }
     
-    private String getReplaced(String music) {
-        StringBuilder replacedMusic = new StringBuilder();
-        for (char note : music.toCharArray()) {
-            if (note != '#') replacedMusic.append(note);
+    private String getReplacedNotes(String notes) {
+        StringBuilder replacedNotes = new StringBuilder();
+        for (char note : notes.toCharArray()) {
+            if (note != '#') replacedNotes.append(note);
             else {
-                int targetIdx = replacedMusic.length() - 1;
-                replacedMusic.setCharAt(targetIdx, Character.toLowerCase(replacedMusic.charAt(targetIdx)));
+                int targetIdx = replacedNotes.length() - 1;
+                replacedNotes.setCharAt(targetIdx, Character.toLowerCase(replacedNotes.charAt(targetIdx)));
             }
         }
         
-        return replacedMusic.toString();
+        return replacedNotes.toString();
     }
     
     private int getDuration(String startTime, String endTime) {
