@@ -7,16 +7,17 @@ class Solution {
         
         long sum1 = 0;
         long sum2 = 0;
+        int maxNum = Integer.MIN_VALUE;        
         
-        for (int num : queue1) {
-            q1.offer(num);
-            sum1 += num;
+        for (int i = 0; i < queue1.length; i++) {
+            q1.offer(queue1[i]);
+            sum1 += queue1[i];            
+            q2.offer(queue2[i]);
+            sum2 += queue2[i];
+            maxNum = Math.max(maxNum, Math.max(queue1[i], queue2[i]));
         }
         
-        for (int num : queue2) {
-            q2.offer(num);
-            sum2 += num;
-        }
+        if ((sum1 + sum2) % 2 != 0 || maxNum > (sum1 + sum2) / 2) return -1;
         
         int cnt = 0;
         
@@ -37,7 +38,7 @@ class Solution {
             
             cnt++;
             
-            if (cnt > (q1.size() + q2.size() - 2) * 2) return -1;
+            if (cnt > queue1.length * 3) return -1;
         }
         
         return cnt;
