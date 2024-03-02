@@ -13,7 +13,8 @@ class Solution {
             q1.offer(queue1[i]);
             sum1 += queue1[i];            
             q2.offer(queue2[i]);
-            sum2 += queue2[i];
+            sum2 += queue2[i];            
+            
             maxNum = Math.max(maxNum, Math.max(queue1[i], queue2[i]));
         }
         
@@ -22,18 +23,14 @@ class Solution {
         int cnt = 0;
         
         while (sum1 != sum2) {
-            int num;
-            
             if (sum1 < sum2) {
-                num = q2.poll();
-                q1.offer(num);
-                sum1 += num;
-                sum2 -= num;                
+                sum1 += q2.peek();
+                sum2 -= q2.peek();
+                q1.offer(q2.poll());        
             } else if (sum1 > sum2) {
-                num = q1.poll();
-                q2.offer(num);
-                sum1 -= num;
-                sum2 += num;                
+                sum1 -= q1.peek();
+                sum2 += q1.peek();
+                q2.offer(q1.poll());
             }
             
             cnt++;
