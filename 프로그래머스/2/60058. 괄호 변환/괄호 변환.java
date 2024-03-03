@@ -46,3 +46,20 @@ class Solution {
         return sb.toString();
     }
 }
+
+
+// 스택을 이용해서 올바른 괄호 문자열인지 확인하는 것보다 괄호의 개수를 직접 세는 편이 처리속도가 더 빠르다
+// public static boolean isValidParentheses(String parenthesis) {    
+//     int cnt = 0;
+//     for(int i = 0; i < parenthesis.length(); i++) {        
+//         if(parenthesis.charAt(i) == '(') {
+//             cnt++;
+//         } else {
+//             cnt--;
+//         }
+        
+//         if(cnt < 0) return false;
+//     }
+    
+//     return true;
+// }
