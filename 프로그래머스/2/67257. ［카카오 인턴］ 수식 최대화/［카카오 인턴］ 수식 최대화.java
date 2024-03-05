@@ -27,9 +27,7 @@ class Solution {
             ArrayList<Character> tempOpList = new ArrayList<>(opList);
             
             for (char op : ops.toCharArray()) {
-                int idx = 0;
-                // 리스트의 범위 내에서 반복
-                while (idx < tempOpList.size()) {
+                for (int idx = 0; idx < tempOpList.size(); idx++) {
                     // 리스트의 연산자가 우선순위에 부합하면
                     if (tempOpList.get(idx) == op) {
                         // 앞의 숫자를 연산결과로 갱신
@@ -38,10 +36,8 @@ class Solution {
                         tempNumList.remove(idx + 1);
                         // 해당 연산자를 리스트에서 제거
                         tempOpList.remove(idx);
-                    // 우선순위에 부합하지 않으면
-                    } else {
-                        // 다음 차례로
-                        idx++;
+                        // 인덱스 증가 무효화
+                        idx--;
                     }
                 }
             }
