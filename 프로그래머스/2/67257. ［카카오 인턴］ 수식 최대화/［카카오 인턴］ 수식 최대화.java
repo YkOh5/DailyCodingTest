@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 class Solution {
     public long solution(String expression) {
-        // 연산자 우선순위
+        // 연산자 우선순위에 따른 순열
         String[] opPriority = {"+-*", "+*-", "-+*", "-*+", "*+-", "*-+"};
         ArrayList<Character> opList = new ArrayList<>();
         ArrayList<Long> numList = new ArrayList<>();
