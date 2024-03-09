@@ -1,3 +1,5 @@
+// Integer.bitCount(); 를 이용하면 더 효율적인 코드를 짤 수 있다?
+
 import java.util.Arrays;
 
 class Solution {
