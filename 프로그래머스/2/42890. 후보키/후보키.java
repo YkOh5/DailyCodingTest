@@ -1,3 +1,5 @@
+// DB 내 주어진 열(column)들의 멱집합에서 공집합을 제외한 모든 부분집합들 중 유일성과 최소성을 만족하는 경우 후보키로 쓰일 수 있다.
+
 import java.util.*;
 
 class Solution {
@@ -28,10 +30,10 @@ class Solution {
             
             // 유일성 검증
             HashSet<ArrayList<String>> subsetSet = new HashSet<>();            
-            for (int i = 0; i < relation.length; i++) {
+            for (int row = 0; row < relation.length; row++) {
                 ArrayList<String> list = new ArrayList<>();
-                for (int num : subset) {
-                    list.add(relation[i][num]);
+                for (int col : subset) {
+                    list.add(relation[row][col]);
                 }
                 
                 if (subsetSet.contains(list)) break;
