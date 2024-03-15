@@ -25,8 +25,7 @@ class Solution {
             }
             
             int cutline = Integer.parseInt(appCondition.remove(appCondition.size() - 1));
-            int cnt = 0;
-            
+            int cnt = 0;            
             for (ArrayList<String> key : infoMap.keySet()) {
                 if (!key.containsAll(appCondition)) continue;
                 
