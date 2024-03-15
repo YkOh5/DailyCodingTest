@@ -2,9 +2,9 @@ import java.util.*;
 
 class Solution {
     public int[] solution(String[] info, String[] query) {
-        int[] answer = new int[query.length];
-        
+        int[] answer = new int[query.length];        
         HashMap<ArrayList<String>, ArrayList<Integer>> infoMap = new HashMap<>();
+        
         for (String i : info) {
             ArrayList<String> appInfo = new ArrayList<>(Arrays.asList(i.split(" ")));
             int score = Integer.parseInt(appInfo.remove(appInfo.size() - 1));            
@@ -42,7 +42,7 @@ class Solution {
     
     private int countAboveCutline(ArrayList<Integer> scores, int cutline) {
         int left = 0;
-        int right = scores.size()- 1;
+        int right = scores.size() - 1;
         int mid;
         
         while (left <= right) {
