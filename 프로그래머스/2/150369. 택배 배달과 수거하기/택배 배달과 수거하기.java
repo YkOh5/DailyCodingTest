@@ -48,3 +48,28 @@ class Solution {
         }
     }
 }
+
+
+
+// 문제를 잘 파악하면 훨씬 더 간단하고 효율적인 코드를 구현할 수 있다!!!
+// class Solution {
+//     public long solution(int cap, int n, int[] deliveries, int[] pickups) {
+//         long minDistance = 0;
+//         int deliver = 0, pickup = 0;
+        
+//         for(int i = n - 1; i >= 0; i--){
+//             deliver += deliveries[i];
+//             pickup += pickups[i];
+            
+//             while (deliver > 0 || pickup > 0){
+//                 deliver -= cap;
+//                 pickup -= cap;
+                
+//                 minDistance += (i + 1) * 2;
+//             }
+
+//         }
+        
+//         return minDistance;
+//     }
+// }
