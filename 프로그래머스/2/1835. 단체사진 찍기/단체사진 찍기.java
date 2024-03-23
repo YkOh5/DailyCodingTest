@@ -18,7 +18,7 @@ class Solution {
     
     private void countValidPerm(char[] input, char[] output, boolean[] visited, int depth) {
         if (depth == input.length) {
-            if (validPerm(output)) cnt++;
+            if (isValidPerm(output)) cnt++;
             
             return;
         }
@@ -33,9 +33,8 @@ class Solution {
         }
     }
     
-    private boolean validPerm(char[] perm) {
-        HashMap<Character, Integer> posMap = new HashMap<>();
-        
+    private boolean isValidPerm(char[] perm) {
+        HashMap<Character, Integer> posMap = new HashMap<>();        
         for (int i = 0; i < perm.length; i++) {
             posMap.put(perm[i], i);
         }
