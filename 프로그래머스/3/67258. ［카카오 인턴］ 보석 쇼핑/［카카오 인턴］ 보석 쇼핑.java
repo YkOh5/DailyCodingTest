@@ -10,8 +10,7 @@ class Solution {
         }        
                 
         HashMap<String, Integer> gemCntMap = new HashMap<>();
-        HashSet<String> curGemSet = new HashSet<>();
-        
+        HashSet<String> curGemSet = new HashSet<>();        
         int fullSetSize = fullGemSet.size();
         int p1 = 0, p2 = -1;
         
