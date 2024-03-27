@@ -16,7 +16,7 @@ class Solution {
         int m = maps[0].length;
         
         // 맵에서 아군팀이 지나간 칸은 기존 값 1에서 우리팀이 지나간 칸 수의 총합으로 변하므로
-        // 이 점을 조건식에서 활용하면 일반적인 BFS처럼 굳이 visited배열을 쓸 필요가 없다
+        // 이 점을 조건식에서 활용하면 일반적인 BFS처럼 굳이 visited배열을 쓸 필요가 없다        
         // int[][] visited = new int[n][m];
         
         // 동, 서, 남, 북으로의 변위
