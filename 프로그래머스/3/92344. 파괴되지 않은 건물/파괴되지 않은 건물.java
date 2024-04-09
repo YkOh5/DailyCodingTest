@@ -1,3 +1,6 @@
+// 누적합을 이용하면 시간복잡도가 O(N * M + K) = 1,000 * 1,000 + 250,000 = 35만인 반면에
+// 각 스킬을 사용할 때마다 보드를 갱신하면 시간복잡도가 O(N * M * K) = 3500억이 되므로 시간초과!!!
+
 class Solution {
     private int[][] tBoard;
     
@@ -52,3 +55,33 @@ class Solution {
         return cnt;
     }
 }
+
+
+
+// 각 스킬이 사용될 때마다 일일이 보드를 갱신하면 효율성이 떨어진다
+
+// class Solution {
+//     public int solution(int[][] board, int[][] skills) {
+//         int[][] board2 = new int[board.length][board[0].length];
+        
+//         for (int[] skill : skills) {
+//             int sign = (skill[0] == 1)? -1 : 1;
+//             for (int i = skill[1]; i <= skill[3]; i++) {
+//                 for (int j = skill[2]; j <= skill[4]; j++) {
+//                     board[i][j] +=  sign * skill[5];
+//                 }
+//             }
+//         }
+        
+//         return checkBoard(board);
+//     }
+    
+//     private int checkBoard(int[][] board) {
+//         int cnt = 0;
+//         for (int[] row : board) {
+//             for (int num : row) if (num > 0) cnt++;
+//         }
+        
+//         return cnt;
+//     }
+// }
