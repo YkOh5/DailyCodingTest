@@ -1,5 +1,5 @@
 class Solution {
-    int grooveCnt = 0;
+    private int grooveCnt = 0;
 
     public boolean solution(int[][] key, int[][] lock) {
         for (int[] row : lock) {
