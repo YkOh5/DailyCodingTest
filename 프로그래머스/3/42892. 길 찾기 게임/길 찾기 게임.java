@@ -23,7 +23,7 @@ class Solution {
             addNode(info[0], idxMap.get(info[0]));
         }
                         
-        return new Integer[][]{preOrdTrav(root), postOrdTrav(root)};
+        return new Integer[][]{preOrdTrav(root).toArray(new Integer[0]), postOrdTrav(root).toArray(new Integer[0])};
     }
     
     private class Node {
@@ -53,23 +53,23 @@ class Solution {
         return node;
     }
     
-    private Integer[] preOrdTrav(Node node) {
+    private ArrayList<Integer> preOrdTrav(Node node) {
         if (node != null) {
             preOrdTravList.add(node.data);
             preOrdTrav(node.left);
             preOrdTrav(node.right);
         }
         
-        return preOrdTravList.toArray(new Integer[0]);
+        return preOrdTravList;
     }
     
-    private Integer[] postOrdTrav(Node node) {
+    private ArrayList<Integer> postOrdTrav(Node node) {
         if (node != null) {
             postOrdTrav(node.left);
             postOrdTrav(node.right);
             postOrdTravList.add(node.data);
         }
         
-        return postOrdTravList.toArray(new Integer[0]);
+        return postOrdTravList;
     }
 }
