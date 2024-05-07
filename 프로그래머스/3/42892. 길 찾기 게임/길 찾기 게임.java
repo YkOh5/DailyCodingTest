@@ -14,8 +14,8 @@ class Solution {
         
         Arrays.sort(nodeinfo, new Comparator<int[]>() {
             @Override
-            public int compare(int[] node1, int[] node2) {
-                return node2[1] - node1[1];
+            public int compare(int[] info1, int[] info2) {
+                return info2[1] - info1[1];
             }
         });
         
@@ -42,13 +42,13 @@ class Solution {
         Node node = new Node(key, data);
         
         if (root == null) root = node;
-        else locateNode(root, node);
+        else insertNode(root, node);
     }
     
-    private Node locateNode(Node node, Node newNode) {
+    private Node insertNode(Node node, Node newNode) {
         if (node == null) return newNode;
-        else if (node.key > newNode.key) node.left = locateNode(node.left, newNode);
-        else if (node.key < newNode.key) node.right = locateNode(node.right, newNode);
+        else if (node.key > newNode.key) node.left = insertNode(node.left, newNode);
+        else if (node.key < newNode.key) node.right = insertNode(node.right, newNode);
         
         return node;
     }
