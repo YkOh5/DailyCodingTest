@@ -1,3 +1,5 @@
+// 기본시간 이하면 기본요금
+
 import java.util.*;
 
 class Solution {
